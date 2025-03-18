@@ -165,7 +165,9 @@
   padding-top: 80px; /* Match the header height */
 }
 
-.header-nav-checkbox:checked ~ .block-box .header-nav-container {
+.header-nav-checkbox:checked ~ div .header-nav-container,
+.header-nav-checkbox:checked ~ .block-inner .header-nav-container,
+.header-nav-checkbox:checked ~ .header-nav-container {
   right: 0;
   display: block;
 }
