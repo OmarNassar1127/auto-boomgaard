@@ -48,12 +48,7 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-logo-section">
             <a href="/" className="footer-logo">
-              <div className="svg-wrapper svg-wrapper-logo">
-                {/* SVG Logo here - Would need the actual SVG */}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 177 31">
-                  <text x="0" y="20" fill="#e74c3c" fontFamily="Arial" fontSize="24" fontWeight="bold">Auto Boomgaard</text>
-                </svg>
-              </div>
+              <h2 className="logo-text">Auto Boomgaard</h2>
             </a>
             <p className="footer-slogan">Premium specialist in <span>
               <a href="/aanbod/audi/">Audi</a>, <a href="/aanbod/bentley/">Bentley</a> &amp; <a href="/aanbod/porsche/">Porsche</a>
@@ -141,8 +136,8 @@ function Footer() {
               <a href="https://itunes.apple.com/nl/app/vd-akker/id1073901305?mt=8" target="_blank" rel="noopener noreferrer">
                 <i className="svg-icon svg-icon-apple">
                   {/* SVG Apple Icon */}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="#fff">
-                    <path d="M12.6 8.1c-.02-1.7 1.4-2.5 1.46-2.54-.8-1.16-2.03-1.32-2.47-1.34-1.04-.1-2.04.61-2.57.61-.53 0-1.35-.6-2.21-.58-.14 0-2.8.17-3.57 2.1-.15.37-.27.78-.27 1.4 0 1.84 1.15 4.34 2.28 5.97.58.8 1.33 1.7 2.27 1.67 1.01-.03 1.67-.73 2.46-.73.76 0 1.25.7 2.34.7 1.2 0 1.95-.6 2.47-1.4.78-1.14 1.1-2.25 1.12-2.3-.02-.03-2.15-.83-2.17-3.26zm-2.04-5.95c.55-.67.93-1.6.82-2.53-.8.03-1.76.53-2.33 1.2-.51.6-.96 1.55-.84 2.47.88.07 1.79-.46 2.35-1.14z"/>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                   </svg>
                 </i>
                 <span>Apple</span>
@@ -150,8 +145,8 @@ function Footer() {
               <a href="https://play.google.com/store/apps/details?id=nl.twisted.vdakkerapp" target="_blank" rel="noopener noreferrer">
                 <i className="svg-icon svg-icon-android">
                   {/* SVG Android Icon */}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="#fff">
-                    <path d="M3 3.5c-.83 0-1.5.67-1.5 1.5v6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5c0-.83-.67-1.5-1.5-1.5zm10 0c-.83 0-1.5.67-1.5 1.5v6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5c0-.83-.67-1.5-1.5-1.5zm-5-3C5.63.5 3.79 1.95 3.05 4H13c-.75-2.05-2.59-3.5-5-3.5zM8 3a1 1 0 0 0 0-2 1 1 0 0 0 0 2zm-6 2.5v6c0 1.66 1.34 3 3 3v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V14h3v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V14c1.66 0 3-1.34 3-3v-6H2z"/>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+                    <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/>
                   </svg>
                 </i>
                 <span>Android</span>

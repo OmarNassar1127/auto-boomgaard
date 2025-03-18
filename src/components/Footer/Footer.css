@@ -30,9 +30,14 @@
   margin-bottom: 5px;
 }
 
-.footer-logo svg {
-  width: 177px;
-  height: 31px;
+.logo-text {
+  color: #e74c3c;
+  font-family: Arial, sans-serif;
+  font-size: 38px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .footer-slogan {
