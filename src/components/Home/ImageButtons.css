@@ -1,4 +1,5 @@
 .bg-gradient-hard-to-dark {
+  background: linear-gradient(to bottom, #f0f0f0, #e5e5e5); /* Lighter gradient background */
   padding: 2rem 0;
 }
 

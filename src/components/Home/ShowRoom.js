@@ -4,6 +4,7 @@ import "./ShowRoom.css";
 function ShowRoom() {
   return (
     <div className="showroom-section">
+      <div className="showroom-container">
       <h2 className="showroom-title">Verwacht in onze showroom</h2>
 
       <div className="cars-grid">
@@ -67,6 +68,7 @@ function ShowRoom() {
           <p className="car-model">Sport P550e Autobiography</p>
           <p className="car-details">2024 | 12.900 km</p>
         </div>
+      </div>
       </div>
     </div>
   );
