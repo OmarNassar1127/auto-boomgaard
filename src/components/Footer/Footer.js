@@ -102,8 +102,8 @@ function Footer() {
           </div>
 
           <div className="address">
-            <div>Steenovenseweg 1B</div>
-            <div>5681 BA Best</div>
+            <div>Ondernemingsweg 56C</div>
+            <div>1422 DZ UITHOORN</div>
           </div>
 
           <div className="footer-nav">
