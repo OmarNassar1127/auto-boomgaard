@@ -1,21 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./Header.css";
 
-function Header() {
+function Header({ onNavChange, currentPage }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isSearchPage = currentPage === 'search';
 
   // Function to close the menu
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setMenuOpen(false);
     // Find the checkbox and uncheck it
     const checkbox = document.getElementById("header-nav-checkbox");
     if (checkbox) checkbox.checked = false;
-  };
+  }, []);
 
   // Function to toggle the menu state
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  // Function to handle navigation
+  const handleNavigation = (page, event) => {
+    event.preventDefault();
+    onNavChange(page);
+    closeMenu();
   };
 
   // Handle scroll event to detect when page is scrolled
@@ -35,11 +43,13 @@ function Header() {
       }
     };
 
-    // Handle scroll events
+    // Handle scroll events - only needed for home page
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
+      if (!isSearchPage) {
+        const isScrolled = window.scrollY > 10;
+        if (isScrolled !== scrolled) {
+          setScrolled(isScrolled);
+        }
       }
     };
 
@@ -56,8 +66,12 @@ function Header() {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 
-    // Initial check
-    handleScroll();
+    // Initial check - force scrolled state on search page
+    if (isSearchPage) {
+      setScrolled(true);
+    } else {
+      handleScroll();
+    }
 
     // Clean up event listeners
     return () => {
@@ -65,14 +79,14 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
-  }, [scrolled, menuOpen, closeMenu]);
+  }, [scrolled, menuOpen, closeMenu, isSearchPage]);
 
   return (
     <header
       id="site-header"
       className={`block block-full-width block-site-header block-site-header-show-extra-items block-site-header-hidden-nav block-site-header-overlay block-site-header-light ${
         scrolled ? "scrolled" : ""
-      }`}
+      } ${isSearchPage ? "search-page" : ""}`}
     >
       {/* Move checkbox here, inside the header component */}
       <input
@@ -92,7 +106,7 @@ function Header() {
       <div className="">
         <div className="block-inner">
           {/* Logo */}
-          <a href="/" className="header-logo">
+          <a href="/" className="header-logo" onClick={(e) => handleNavigation('home', e)}>
             <div className="header-branding">
               <span className="company-name">Auto Boomgaard</span>
             </div>
@@ -102,7 +116,7 @@ function Header() {
           <nav className="nav-extra">
             <ul className="hide-print">
               <li className="menu-item-occasions">
-                <a href="/aanbod/">
+                <a href="/aanbod/" onClick={(e) => handleNavigation('search', e)}>
                   <span className="label">AANBOD</span>
                 </a>
               </li>
@@ -115,6 +129,26 @@ function Header() {
               <li className="menu-item-contact">
                 <a href="/contact/">
                   <span className="label">CONTACT</span>
+                </a>
+              </li>
+              <li className="menu-item-search menu-item-icon">
+                <a href="/aanbod/" onClick={(e) => handleNavigation('search', e)}>
+                  <i className="svg-icon svg-icon-search">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </i>
                 </a>
               </li>
               <li className="menu-item-menu menu-item-icon">
@@ -204,21 +238,21 @@ function Header() {
 
             <ul className="header-nav-list">
               <li className="menu-item menu-item-home">
-                <a href="/" title="">
+                <a href="/" title="" onClick={(e) => handleNavigation('home', e)}>
                   HOME
                 </a>
               </li>
-              <li className="menu-item menu-item-over-vd-akker">
-                <a href="/over-vd-akker/" title="">
-                  OVER Auto Boomgaard
+              <li className="menu-item menu-item-over-boomgaard">
+                <a href="/over-boomgaard/" title="">
+                  OVER AUTO BOOMGAARD
                 </a>
               </li>
               <li className="menu-item menu-item-aanbod">
-                <a href="/aanbod/" title="">
+                <a href="/aanbod/" title="" onClick={(e) => handleNavigation('search', e)}>
                   AANBOD
                 </a>
                 <div className="item-car-types">
-                  <a href="/aanbod/?body=sports" className="car-type">
+                  <a href="/aanbod/?body=sports" className="car-type" onClick={(e) => handleNavigation('search', e)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100.8 38"
@@ -232,7 +266,7 @@ function Header() {
                     </svg>
                     <span className="label">SPORTS</span>
                   </a>
-                  <a href="/aanbod/?body=suv" className="car-type">
+                  <a href="/aanbod/?body=suv" className="car-type" onClick={(e) => handleNavigation('search', e)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100.8 38"
@@ -246,7 +280,7 @@ function Header() {
                     </svg>
                     <span className="label">SUV</span>
                   </a>
-                  <a href="/aanbod/?body=sedan" className="car-type">
+                  <a href="/aanbod/?body=sedan" className="car-type" onClick={(e) => handleNavigation('search', e)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100.8 38"
@@ -260,7 +294,7 @@ function Header() {
                     </svg>
                     <span className="label">SEDAN</span>
                   </a>
-                  <a href="/aanbod/" className="car-type all">
+                  <a href="/aanbod/" className="car-type all" onClick={(e) => handleNavigation('search', e)}>
                     <div className="circle">
                       <svg width="38" height="38" viewBox="0 0 28px2">
                         <path d="M16.000,32.000 C7.163,32.000 0.000,24.837 0.000,16.000 C0.000,7.163 7.163,0.000 16.000,0.000 C24.837,0.000 32.000,7.163 32.000,16.000 C32.000,24.837 24.837,32.000 16.000,32.000 ZM16.000,1.792 C8.153,1.792 1.792,8.153 1.792,16.000 C1.792,23.847 8.153,30.208 16.000,30.208 C23.847,30.208 30.208,23.847 30.208,16.000 C30.208,8.153 23.847,1.792 16.000,1.792 ZM22.000,18.000 C21.171,18.000 20.500,17.328 20.500,16.500 C20.500,15.671 21.171,15.000 22.000,15.000 C22.828,15.000 23.500,15.671 23.500,16.500 C23.500,17.328 22.828,18.000 22.000,18.000 ZM16.000,18.000 C15.171,18.000 14.500,17.328 14.500,16.500 C14.500,15.671 15.171,15.000 16.000,15.000 C16.828,15.000 17.500,15.671 17.500,16.500 C17.500,17.328 16.828,18.000 16.000,18.000 ZM10.000,18.000 C9.172,18.000 8.500,17.328 8.500,16.500 C8.500,15.671 9.172,15.000 10.000,15.000 C10.828,15.000 11.500,15.671 11.500,16.500 C11.500,17.328 10.828,18.000 10.000,18.000 Z"></path>

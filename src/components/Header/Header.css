@@ -31,6 +31,12 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow when scrolled */
 }
 
+/* For the search page, we want the header to be solid black */
+.block-site-header.search-page {
+  background-color: #000; /* Solid black for search page */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
 .header-logo {
   display: inline-block;
   padding: 0;
@@ -133,7 +139,19 @@
 .nav-extra .menu-item-icon {
   display: flex;
   align-items: center;
-  margin-left: 30px; /* Increased margin */
+  margin-left: 20px; /* Reduced margin between icons */
+}
+
+.menu-item-search {
+  margin-left: 25px;
+}
+
+.svg-icon-search {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-extra a {
