@@ -112,16 +112,20 @@ function Footer() {
           </div>
 
           <div className="footer-nav">
-            <ul className="footer-nav-list">
-              <li><a href="/">HOME</a></li>
-              <li><a href="/over-vd-akker/">OVER Auto Boomgaard</a></li>
-              <li><a href="/aanbod/">AANBOD</a></li>
-              <li><a href="/diensten/">ONZE DIENSTEN</a></li>
-              <li><a href="/nieuws-media/">NIEUWS & MEDIA</a></li>
-              <li><a href="/contact/">CONTACT</a></li>
-              <li><a href="/privacy-policy/">PRIVACY POLICY</a></li>
-              <li><a href="/cookiebeleid/">COOKIEBELEID</a></li>
-            </ul>
+            <div className="footer-nav-columns">
+              <ul className="footer-nav-list">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/over-vd-akker/">OVER Auto Boomgaard</a></li>
+                <li><a href="/aanbod/">AANBOD</a></li>
+                <li><a href="/diensten/">ONZE DIENSTEN</a></li>
+              </ul>
+              <ul className="footer-nav-list">
+                <li><a href="/nieuws-media/">NIEUWS & MEDIA</a></li>
+                <li><a href="/contact/">CONTACT</a></li>
+                <li><a href="/privacy-policy/">PRIVACY POLICY</a></li>
+                <li><a href="/cookiebeleid/">COOKIEBELEID</a></li>
+              </ul>
+            </div>
           </div>
         </div>
 
