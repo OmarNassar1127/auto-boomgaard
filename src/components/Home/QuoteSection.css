@@ -1,0 +1,80 @@
+.quote-section {
+  background-color: #f2f2f2;
+  padding: 50px 0;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+blockquote {
+  margin: 0 0 30px 0;
+  padding: 0;
+}
+
+blockquote p {
+  font-size: 24px;
+  line-height: 1.4;
+  color: #777;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
+.highlight {
+  color: #e70020;
+  font-style: normal;
+}
+
+.social-media-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.social-media-links a {
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.social-media-links a:hover {
+  color: #e70020;
+}
+
+.social-media-links .svg-icon {
+  display: block;
+}
+
+.social-media-links .svg-icon svg {
+  width: 24px;
+  height: 24px;
+  transition: fill 0.3s ease;
+}
+
+.social-media-links a:hover .svg-icon svg {
+  fill: #e70020;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  blockquote p {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 992px) {
+  .quote-section {
+    padding: 70px 0;
+  }
+  
+  blockquote p {
+    font-size: 32px;
+  }
+}

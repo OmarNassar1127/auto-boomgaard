@@ -1,0 +1,491 @@
+/* Base Header Styles */
+.block-site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Higher z-index to ensure it's above everything */
+  transition: all 0.3s ease;
+  background-color: transparent; /* Transparent background */
+  padding: 12px 0;
+  margin: 0;
+  box-shadow: none; /* Remove shadow for clean appearance */
+  transform: translateZ(0); /* Force hardware acceleration */
+  will-change: transform; /* Optimization for animations */
+  height: 80px; /* Increased height */
+  display: flex;
+  align-items: center;
+}
+
+.block-site-header-overlay {
+  background-color: transparent; /* Transparent background */
+}
+
+.block-site-header-light {
+  color: white; /* Changed to white text for better visibility over videos */
+}
+
+/* Styling for when the navbar is scrolled */
+.block-site-header.scrolled {
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background when scrolled */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow when scrolled */
+}
+
+.header-logo {
+  display: inline-block;
+  padding: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.header-branding {
+  display: flex;
+  align-items: center;
+  margin-left: 30px; /* Match right margin of hamburger icon */
+}
+
+.company-name {
+  font-size: 34px; /* Adjusted size */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif; /* Same font as navbar items */
+  position: relative;
+  text-transform: uppercase; /* Match the navbar style */
+  color: white;
+  padding: 0 5px;
+  overflow: visible;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.company-name:hover {
+  color: #f5f5f5;
+}
+
+.header-nav-toggle-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  transition: opacity 0.3s ease;
+  cursor: pointer; /* Make it clear it's clickable */
+}
+
+.header-nav-checkbox {
+  display: none;
+}
+
+.header-nav-checkbox:checked ~ .header-nav-toggle-overlay {
+  display: block;
+  opacity: 1;
+}
+
+.menu-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Changed to white */
+  height: 80px; /* Increased height */
+  padding: 0 20px; /* Increased padding */
+  font-size: 24px;
+  box-sizing: border-box;
+}
+
+.svg-icon-menu {
+  width: 36px !important; /* Increased size */
+  height: 36px !important; /* Increased size */
+  min-width: 36px !important; /* Increased size */
+  min-height: 36px !important; /* Increased size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-extra {
+  position: absolute;
+  top: 0;
+  right: 30px; /* Increased right margin */
+  z-index: 10;
+  height: 80px; /* Fixed height to match header */
+  display: flex;
+  align-items: center;
+}
+
+.nav-extra ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-extra li {
+  margin-left: 30px; /* Increased margin */
+  display: flex;
+  align-items: center;
+}
+
+.nav-extra .menu-item-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 30px; /* Increased margin */
+}
+
+.nav-extra a {
+  display: flex;
+  align-items: center;
+  height: 80px; /* Increased height to match header */
+  color: white; /* Changed to white */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 24px; /* Increased font size */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  padding: 0 5px;
+}
+
+/* Side Navigation Menu */
+.header-nav-container {
+  position: fixed;
+  top: 0;
+  right: -500px;
+  width: 500px;
+  height: 100vh; /* Full viewport height */
+  background-color: white;
+  color: black;
+  transition: right 0.3s ease;
+  z-index: 95;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.08);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  padding-top: 80px; /* Match the header height */
+}
+
+.header-nav-checkbox:checked ~ .block-box .header-nav-container {
+  right: 0;
+  display: block;
+}
+
+.header-nav-container-inner {
+  padding: 20px 0 0; /* Adjusted padding to match the second image */
+}
+
+/* Close Button */
+.header-search-close-wrapper {
+  position: absolute; /* Changed to absolute */
+  top: 25px; /* Adjusted top position */
+  right: 25px; /* Adjusted right position */
+  margin-bottom: 0; /* Removed margin */
+  text-align: right;
+  z-index: 100; /* Ensure it's above other content */
+}
+
+.header-close {
+  display: inline-flex;
+  width: 36px; /* Increased size */
+  height: 36px; /* Increased size */
+  cursor: pointer;
+  background-color: transparent;
+  padding: 6px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.header-close:hover {
+  transform: scale(1.05);
+}
+
+.header-close:active {
+  transform: scale(0.95);
+}
+
+.header-close .svg-icon {
+  width: 100%;
+  height: 100%;
+  color: #333;
+}
+
+/* New Search Bar Styles */
+.search-bar {
+  width: 100%;
+  padding: 0 20px 15px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  margin-top: -20px; /* Adjust positioning */
+  transition: all 0.3s ease;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px 15px 12px 42px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  outline: none;
+  transition: all 0.2s ease;
+  -webkit-appearance: none; /* Fix for iOS styling issues */
+}
+
+.search-bar input:focus {
+  border-color: #ccc;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  left: 35px;
+  top: 12px; /* Adjusted position */
+  color: #999;
+  pointer-events: none; /* Ensures clicks pass through to the input */
+}
+
+/* Navigation List */
+.header-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px; /* Add space at top */
+}
+
+.header-nav-list li {
+  margin-bottom: 0;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.header-nav-list a {
+  display: block;
+  font-weight: 500;
+  font-size: 18px; /* Increased size */
+  letter-spacing: 0.5px;
+  color: #333;
+  text-decoration: none;
+  padding: 0 20px;
+  transition: color 0.2s ease;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif; /* Using imported font */
+}
+
+.header-nav-list .menu-item-home a {
+  color: #e70020; /* Make HOME red */
+  font-weight: 600;
+}
+
+.header-nav-list a:hover {
+  color: #e70020;
+}
+
+/* Car Type Submenu Styles */
+.item-car-types {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-top: 5px;
+  background-color: #f8f8f8; /* Lighter background */
+  padding: 15px 15px; /* Increased padding */
+  border-radius: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  overflow-x: auto;
+}
+
+.item-car-types svg {
+  width: 65px;
+  height: 25px;
+  fill: currentColor;
+  display: block;
+  opacity: 0.85;
+}
+
+.car-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 23%;
+  min-width: 90px;
+  text-align: center;
+}
+
+.car-type:hover {
+  background-color: #f0f0f0;
+}
+
+.car-type.all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.car-type .svg-icon, .car-type i {
+  margin-bottom: 8px;
+  width: auto;
+  height: auto;
+  text-align: center;
+  display: block;
+}
+
+.car-type svg {
+  margin-bottom: 8px;
+  display: block;
+}
+
+.car-type .circle {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  margin-bottom: 8px;
+}
+
+.car-type .label {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Social Media Icons */
+.social-media-icons {
+  display: flex;
+  margin-top: 40px;
+  padding: 25px;
+  border-top: 1px solid #eee;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+.btn-social-media {
+  display: inline-flex;
+  margin: 0 18px; /* Increased spacing */
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.btn-social-media:hover {
+  color: #e70020;
+}
+
+.btn-social-media .svg-icon {
+  width: 26px; /* Increased size */
+  height: 26px; /* Increased size */
+}
+
+.btn-social-media .name {
+  display: none; /* Hide the name */
+}
+
+.job-count-badge {
+  background: #e70020;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 0.75rem;
+  margin-left: 5px;
+}
+
+/* Responsive styles for different screen sizes */
+@media (max-width: 1024px) {
+  .nav-extra li {
+    margin-left: 20px;
+  }
+  
+  .nav-extra a {
+    font-size: 18px;
+  }
+  
+  .company-name {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 850px) {
+  .header-branding {
+    margin-left: 15px;
+  }
+  
+  .company-name {
+    font-size: 24px;
+  }
+  
+  .nav-extra {
+    right: 15px;
+  }
+  
+  .nav-extra li:not(.menu-item-menu) {
+    display: none;
+  }
+  
+  .menu-item-icon {
+    margin-left: 0 !important;
+  }
+  
+  .header-nav-container {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-branding {
+    margin-left: 10px;
+  }
+  
+  .company-name {
+    font-size: 22px;
+  }
+  
+  .menu-button {
+    padding: 0 10px;
+  }
+  
+  .item-car-types {
+    overflow-x: scroll;
+    justify-content: flex-start;
+    padding: 15px 5px;
+  }
+  
+  .car-type {
+    min-width: 80px;
+    margin-right: 5px;
+  }
+  
+  .search-bar input {
+    padding: 10px 15px 10px 38px;
+    font-size: 14px;
+  }
+  
+  .header-nav-list a {
+    font-size: 16px;
+  }
+  
+  .social-media-icons {
+    padding: 20px 10px;
+  }
+  
+  .btn-social-media {
+    margin: 0 12px;
+  }
+}

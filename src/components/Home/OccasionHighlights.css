@@ -1,0 +1,214 @@
+.occasion-highlights-section {
+  background-color: #fff;
+  padding: 40px 15px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.occasion-cards-container,
+.occasion-highlights-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tile-grid-item {
+  flex: 0 0 calc(33.333% - 10px);
+  max-width: calc(33.333% - 10px);
+  display: flex;
+  justify-content: center;
+}
+
+.occasion-highlight {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Main image container */
+.occasion-highlight-main-image {
+  position: relative;
+}
+
+.occasion-highlight-main-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info section */
+.occasion-highlight-wrapper {
+  padding: 20px;
+}
+
+.occasion-highlight-info h3 {
+  margin: 0 0 15px 0;
+  font-weight: normal;
+}
+
+.occasion-highlight-brand {
+  display: block;
+  font-size: 24px;
+}
+
+.occasion-highlight-model {
+  display: block;
+  font-size: 16px;
+  color: #999;
+}
+
+.occasion-highlight-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  border-top: 1px solid #e70020;
+  padding-top: 15px;
+  margin-bottom: 15px;
+}
+
+.occasion-highlight-price {
+  font-size: 16px;
+}
+
+.occasion-highlight-power,
+.occasion-highlight-km {
+  font-size: 14px;
+  color: #999;
+}
+
+/* IMPORTANT: Hide additional images by default */
+.occasion-highlight-images {
+  display: none;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Show additional images ONLY for active and hover cards */
+.occasion-highlight.active .occasion-highlight-images,
+.occasion-highlight.occasion-highlight-hover .occasion-highlight-images {
+  display: flex;
+}
+
+/* Additional images layout */
+.occasion-highlight-images-image {
+  width: calc(50% - 5px);
+  position: relative;
+}
+
+.occasion-highlight-images-image .object-fit-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+}
+
+.occasion-highlight-images-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* "Bekijk" link at the bottom */
+.occasion-highlight-view {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.svg-icon {
+  display: inline-block;
+  width: 24px;
+  height: 12px;
+  margin-left: 5px;
+}
+
+.svg-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Active and hover card styling */
+.occasion-highlight.active,
+.occasion-highlight.occasion-highlight-hover {
+  transform: translateY(-5px);
+}
+
+/* Hover effect for non-active cards */
+.tile-grid-item:hover .occasion-highlight:not(.active):not(.occasion-highlight-hover) {
+  transform: translateY(-5px);
+}
+
+/* Expected occasions section */
+.expected-occasions-wrapper {
+  margin-top: 40px;
+}
+
+.expected-occasions-wrapper h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.expected-occasions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.expected-occasion {
+  background-color: #f5f5f5;
+  padding: 15px;
+  height: 100%;
+}
+
+.expected-occasion p {
+  margin: 0;
+}
+
+/* Margin utility classes */
+.margin-top-1 { margin-top: 10px; }
+.margin-top-2-tablet-m { margin-top: 20px; }
+.margin-top-3-desktop-s { margin-top: 30px; }
+.margin-bottom-2 { margin-bottom: 20px; }
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .tile-grid-item {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+  
+  .margin-top-2-tablet-m {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tile-grid-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .margin-top-1 {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .margin-top-3-desktop-s {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,304 @@
+.footer {
+  background-color: #121212;
+  color: #999;
+  font-size: 14px;
+  padding: 30px 0;
+  width: 100%;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Top section - Logo and Buttons */
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.footer-logo-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.footer-logo svg {
+  width: 177px;
+  height: 31px;
+}
+
+.footer-slogan {
+  color: #999;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.footer-slogan a {
+  color: #999;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-slogan a:hover {
+  color: #e74c3c;
+}
+
+.footer-contact-btns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-contact-btns .btn {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.footer-contact-btns .btn:hover {
+  background-color: #333;
+}
+
+.footer-contact-btns .svg-icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* Middle section - Hours, Address, Nav */
+.footer-middle {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.opening-hours {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.opening-hours .title {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.opening-hours-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+.opening-hours-item .status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.opening-hours-item .place {
+  margin-right: 8px;
+  color: #ccc;
+  min-width: 80px;
+  text-align: right;
+}
+
+.opening-hours-item .times {
+  color: #ccc;
+}
+
+.address {
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.footer-nav {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav-list li a {
+  color: #999;
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.2s;
+}
+
+.footer-nav-list li a:hover {
+  color: #e74c3c;
+}
+
+/* Bottom section - Copyright, App Downloads, Social */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-download-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-download-app-title {
+  color: #ccc;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.app-links {
+  display: flex;
+  gap: 10px;
+}
+
+.app-links a {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.app-links a:hover {
+  color: #fff;
+}
+
+.app-links .svg-icon {
+  margin-right: 5px;
+}
+
+.social-media-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-media-links a {
+  color: #666;
+  transition: color 0.2s;
+}
+
+.social-media-links a:hover {
+  color: #e74c3c;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .footer-top {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .footer-logo-section {
+    text-align: left;
+    margin-bottom: 0;
+  }
+  
+  .footer-contact-btns {
+    justify-content: flex-end;
+  }
+  
+  .footer-middle {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .opening-hours {
+    text-align: left;
+    flex: 1;
+  }
+  
+  .opening-hours-item {
+    justify-content: flex-start;
+  }
+  
+  .address {
+    text-align: left;
+    flex: 1;
+  }
+  
+  .footer-nav {
+    flex: 2;
+  }
+  
+  .footer-nav-list {
+    justify-content: flex-start;
+  }
+  
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .copyright {
+    order: 1;
+    margin-bottom: 0;
+    text-align: left;
+  }
+  
+  .footer-download-app {
+    order: 2;
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+  
+  .footer-download-app-title {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+  
+  .social-media-links {
+    order: 3;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer-nav-list {
+    justify-content: flex-end;
+  }
+  
+  .opening-hours .title,
+  .opening-hours-item .place,
+  .opening-hours-item .times {
+    font-size: 13px;
+  }
+}
