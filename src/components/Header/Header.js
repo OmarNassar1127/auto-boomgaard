@@ -198,7 +198,7 @@ function Header({ onNavChange, currentPage }) {
             {/* Search Bar - Added to match second image */}
             <div className="search-bar">
               <input type="text" placeholder="Zoek een occasion" />
-              <i className="search-icon">
+              <div className="search-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -213,7 +213,7 @@ function Header({ onNavChange, currentPage }) {
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-              </i>
+              </div>
             </div>
 
             <ul className="header-nav-list">

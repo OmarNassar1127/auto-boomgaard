@@ -66,6 +66,8 @@
   transition: all 0.2s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   font-family: 'Montserrat', Arial, sans-serif;
+  position: relative;
+  z-index: 0; /* Ensures the input is below the icon */
 }
 
 .search-input:focus {
@@ -86,6 +88,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none; /* Prevents clicks on the icon itself */
+  z-index: 1; /* Ensures the icon stays above the input */
 }
 
 .sort-dropdown {

@@ -265,6 +265,7 @@
   top: 12px; /* Adjusted position */
   color: #999;
   pointer-events: none; /* Ensures clicks pass through to the input */
+  z-index: 1; /* Ensures the icon stays above the input */
 }
 
 /* Navigation List */
@@ -350,6 +351,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 18px; /* Add some top padding to compensate for missing icon */
 }
 
 .car-type .svg-icon, .car-type i {
