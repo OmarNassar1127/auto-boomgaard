@@ -96,12 +96,12 @@ function Footer() {
             <div className="title">OPENINGSTIJDEN VANDAAG</div>
             <div className="opening-hours-item">
               <span className="status" style={{ backgroundColor: showroomStatus.open ? '#28a745' : '#dc3545' }}></span>
-              <span className="place">Showroom</span>
+              <span className="place" style={{ textAlign: 'left' }}>Showroom</span>
               <span className="times">{showroomStatus.times}</span>
             </div>
             <div className="opening-hours-item">
               <span className="status" style={{ backgroundColor: garageStatus.open ? '#28a745' : '#dc3545' }}></span>
-              <span className="place">Garage</span>
+              <span className="place" style={{ textAlign: 'left' }}>Garage</span>
               <span className="times">{garageStatus.times}</span>
             </div>
           </div>
