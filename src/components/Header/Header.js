@@ -108,7 +108,12 @@ function Header({ onNavChange, currentPage }) {
           {/* Logo */}
           <a href="/" className="header-logo" onClick={(e) => handleNavigation('home', e)}>
             <div className="header-branding">
-              <span className="company-name">Auto Boomgaard</span>
+            <img 
+              src="/images/LogoBoomgaard.png" 
+              alt="Auto Boomgaard Logo" 
+              className="company-logo" 
+            />
+              {/* <span className="company-name">Auto Boomgaard</span> */}
             </div>
           </a>
 

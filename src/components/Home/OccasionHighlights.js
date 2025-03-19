@@ -16,6 +16,8 @@ function OccasionHighlights() {
         brand: 'Ferrari',
         model: 'SF90 Spider',
         price: '€ 549.800',
+        power: '1000 pk',  // Added power
+        km: '1.250 km',    // Added km
         images: [
           'https://api.akker.nl/storage/images/2489/thumbnails/68RqCR6D29AW9wEwjxfvJNYudk8gbvcgwWqc9bpX.RESIZED_600_400_0.500000_0.500000_80.jpg',
           'https://api.akker.nl/storage/images/2489/thumbnails/amhQy3OhVGAlNaFfYusnwoChgCHaqB4ikYoBYLiw.RESIZED_600_400_0.500000_0.500000_80.jpg',
@@ -27,6 +29,8 @@ function OccasionHighlights() {
         brand: 'Porsche',
         model: '992 Sport Classic',
         price: 'Verkocht',
+        power: '550 pk',   // Added power
+        km: '36 km',       // Added km
         images: [
           'https://api.akker.nl/storage/images/2540/thumbnails/t9jQL6QAYI8jIV8Tmc5lxgYZtPtOhs9XlcT0XKuh.RESIZED_600_400_0.500000_0.500000_80.jpg',
           'https://api.akker.nl/storage/images/2540/thumbnails/qJzZccpnQ3FxQS4pTSX01ecKXhHJ5uFHXW97Zk9I.RESIZED_600_400_0.500000_0.500000_80.jpg',
@@ -38,6 +42,8 @@ function OccasionHighlights() {
         brand: 'Audi',
         model: 'RSQ8 Performance (facelift)',
         price: '€ 256.450',
+        power: '640 pk',   // Added power
+        km: '9.600 km',    // Added km
         images: [
           'https://api.akker.nl/storage/images/2445/thumbnails/5i9w35w2UHhiiQlbDNHunWCJtDl9fnTiS27ufRbw.RESIZED_600_400_0.500000_0.500000_80.jpg',
           'https://api.akker.nl/storage/images/2445/thumbnails/oNTQyvBu4bCCn8c9mXE0Bf0xVenyqCn8zaXdAQuF.RESIZED_600_400_0.500000_0.500000_80.jpg',
@@ -111,6 +117,16 @@ function OccasionHighlights() {
                         <span className="occasion-highlight-price">
                           {occasion.price}
                         </span>
+                        {activeCardIndex === index && occasion.power && (
+                          <span className="occasion-highlight-power">
+                            {occasion.power}
+                          </span>
+                        )}
+                        {activeCardIndex === index && occasion.km && (
+                          <span className="occasion-highlight-km">
+                            {occasion.km}
+                          </span>
+                        )}
                       </div>
                     </div>
 
