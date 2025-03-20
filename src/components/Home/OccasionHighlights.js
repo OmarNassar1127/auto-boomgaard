@@ -57,7 +57,7 @@ function OccasionHighlights() {
     setTimeout(() => {
       setOccasions(mockOccasions);
       setLoading(false);
-      
+
       // Initialize activeImageIndex with 0 for each car
       const initialIndices = {};
       mockOccasions.forEach((occasion) => {
@@ -78,7 +78,7 @@ function OccasionHighlights() {
   const handleImageChange = (occasionId, imageIndex) => {
     setActiveImageIndex({
       ...activeImageIndex,
-      [occasionId]: imageIndex
+      [occasionId]: imageIndex,
     });
   };
 
@@ -96,7 +96,7 @@ function OccasionHighlights() {
           <h2 className="section-title">Recente Occasions</h2>
           <div className="section-subtitle">Ontdek onze selectie</div>
         </div>
-        
+
         {loading ? (
           <div className="loading">
             <div className="spinner"></div>
@@ -105,8 +105,10 @@ function OccasionHighlights() {
           <Row className="g-4">
             {occasions.map((occasion, index) => (
               <Col key={occasion.id} lg={4} md={6} sm={12} className="mb-4">
-                <div 
-                  className={`car-card ${activeCardIndex === index ? "active" : ""}`}
+                <div
+                  className={`car-card ${
+                    activeCardIndex === index ? "active" : ""
+                  }`}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -118,28 +120,87 @@ function OccasionHighlights() {
                         className="main-image"
                       />
                       {generateBadge(occasion.price)}
-                    </div>
-                    
-                    {/* Thumbnail navigation */}
-                    <div className={`thumbnail-navigation ${activeCardIndex === index ? "visible" : ""}`}>
-                      {occasion.images.map((image, imgIndex) => (
-                        <div 
-                          key={imgIndex} 
-                          className={`thumbnail ${activeImageIndex[occasion.id] === imgIndex ? "active" : ""}`}
-                          onClick={() => handleImageChange(occasion.id, imgIndex)}
+
+                      {/* Arrow navigation */}
+                      <button
+                        className="image-nav-arrow arrow-left"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const currentIndex = activeImageIndex[occasion.id];
+                          const newIndex =
+                            currentIndex === 0
+                              ? occasion.images.length - 1
+                              : currentIndex - 1;
+                          handleImageChange(occasion.id, newIndex);
+                        }}
+                        aria-label="Previous image"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         >
-                          <img src={image} alt={`Thumbnail ${imgIndex + 1}`} />
-                        </div>
-                      ))}
+                          <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                      </button>
+
+                      <button
+                        className="image-nav-arrow arrow-right"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const currentIndex = activeImageIndex[occasion.id];
+                          const newIndex =
+                            currentIndex === occasion.images.length - 1
+                              ? 0
+                              : currentIndex + 1;
+                          handleImageChange(occasion.id, newIndex);
+                        }}
+                        aria-label="Next image"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                      </button>
+
+                      {/* Dot indicators */}
+                      <div className="image-dots">
+                        {occasion.images.map((_, imgIndex) => (
+                          <button
+                            key={imgIndex}
+                            className={`dot ${
+                              activeImageIndex[occasion.id] === imgIndex
+                                ? "active"
+                                : ""
+                            }`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleImageChange(occasion.id, imgIndex);
+                            }}
+                            aria-label={`Go to image ${imgIndex + 1}`}
+                          ></button>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div className="card-content">
                     <div className="card-brand-model">
                       <h3 className="car-brand">{occasion.brand}</h3>
                       <div className="car-model">{occasion.model}</div>
                     </div>
-                    
+
                     <div className="card-details">
                       <div className="details-row">
                         <div className="detail-item">
@@ -147,27 +208,28 @@ function OccasionHighlights() {
                           <div className="detail-value">{occasion.price}</div>
                         </div>
                       </div>
-                      
+
                       <div className="details-row">
                         <div className="detail-item">
                           <div className="detail-icon power-icon"></div>
                           <div className="detail-value">{occasion.power}</div>
                         </div>
-                        
+
                         <div className="detail-item">
                           <div className="detail-icon km-icon"></div>
                           <div className="detail-value">{occasion.km}</div>
                         </div>
                       </div>
                     </div>
-                    
-                    <Link 
-                      to={`/auto/${occasion.id}`}
-                      className="view-button"
-                    >
+
+                    <Link to={`/auto/${occasion.id}`} className="view-button">
                       <span>Bekijk</span>
-                      <svg className="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/>
+                      <svg
+                        className="arrow-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                      >
+                        <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
                       </svg>
                     </Link>
                   </div>
@@ -176,12 +238,16 @@ function OccasionHighlights() {
             ))}
           </Row>
         )}
-        
+
         <div className="section-footer">
           <Link to="/aanbod/" className="view-all-button">
             Bekijk alle occasions
-            <svg className="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/>
+            <svg
+              className="arrow-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
             </svg>
           </Link>
         </div>
