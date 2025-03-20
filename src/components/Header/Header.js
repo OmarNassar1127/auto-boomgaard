@@ -121,18 +121,23 @@ function Header({ onNavChange, currentPage }) {
           <nav className="nav-extra">
             <ul className="hide-print">
               <li className="menu-item-occasions">
+                <a href="/" onClick={(e) => handleNavigation('search', e)}>
+                  <span className="label">HOME</span>
+                </a>
+              </li>
+              <li className="menu-item-occasions">
                 <a href="/aanbod/" onClick={(e) => handleNavigation('search', e)}>
                   <span className="label">AANBOD</span>
                 </a>
               </li>
-              <li className="menu-item-vacatures">
+              {/* <li className="menu-item-vacatures">
                 <a href="/vacatures/">
                   <span className="label">VACATURES</span>
                   <span className="job-count-badge">1</span>
                 </a>
-              </li>
+              </li> */}
               <li className="menu-item-contact">
-                <a href="/contact/">
+                <a href="/contact/" onClick={(e) => handleNavigation('contact', e)}>
                   <span className="label">CONTACT</span>
                 </a>
               </li>
@@ -299,13 +304,13 @@ function Header({ onNavChange, currentPage }) {
                   NIEUWS &amp; MEDIA
                 </a>
               </li>
-              <li className="menu-item menu-item-vacatures">
+              {/* <li className="menu-item menu-item-vacatures">
                 <a href="/vacatures/" title="" className="jobs">
                   VACATURES
                 </a>
-              </li>
+              </li> */}
               <li className="menu-item menu-item-contact">
-                <a href="/contact/" title="">
+                <a href="/contact/" title="" onClick={(e) => handleNavigation('contact', e)}>
                   CONTACT
                 </a>
               </li>

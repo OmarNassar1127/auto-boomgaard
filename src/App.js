@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import HomePage from './components/Home/HomePage';
 import SearchResults from './components/Search/SearchResults';
 import CarDetail from './components/Search/CarDetail';
+import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -22,6 +23,8 @@ function AppContent() {
     } else if (location.pathname.startsWith('/auto/')) {
       // Also set search page style for car detail pages
       setCurrentPage('search');
+    } else if (location.pathname === '/contact/') {
+      setCurrentPage('contact');
     }
   }, [location.pathname]);
 
@@ -32,6 +35,8 @@ function AppContent() {
       navigate('/');
     } else if (page === 'search') {
       navigate('/aanbod/');
+    } else if (page === 'contact') {
+      navigate('/contact/');
     }
   };
 
@@ -45,6 +50,7 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/aanbod/" element={<SearchResults />} />
         <Route path="/auto/:id" element={<CarDetail />} />
+        <Route path="/contact/" element={<Contact />} />
       </Routes>
       <Footer />
     </div>
