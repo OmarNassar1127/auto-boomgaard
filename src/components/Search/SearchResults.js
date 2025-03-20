@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import "./SearchResults.css";
 
 function SearchResults() {
@@ -704,7 +705,7 @@ function SearchResults() {
                       </div>
                     </div>
 
-                    <a href={`/aanbod/${vehicle.id}`} className="vehicle-link">
+                    <Link to={`/auto/${vehicle.id}`} className="vehicle-link">
                       Details bekijken
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -720,7 +721,7 @@ function SearchResults() {
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))}

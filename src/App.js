@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from
 import Header from './components/Header/Header';
 import HomePage from './components/Home/HomePage';
 import SearchResults from './components/Search/SearchResults';
+import CarDetail from './components/Search/CarDetail';
 import Footer from './components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -17,6 +18,8 @@ function AppContent() {
     if (location.pathname === '/') {
       setCurrentPage('home');
     } else if (location.pathname === '/aanbod/') {
+      setCurrentPage('search');
+    } else if (location.pathname.startsWith('/auto/')) {
       setCurrentPage('search');
     }
   }, [location.pathname]);
@@ -37,8 +40,11 @@ function AppContent() {
         onNavChange={handleNavChange} 
         currentPage={currentPage}
       />
-      {currentPage === 'home' && <HomePage />}
-      {currentPage === 'search' && <SearchResults />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/aanbod/" element={<SearchResults />} />
+        <Route path="/auto/:id" element={<CarDetail />} />
+      </Routes>
       <Footer />
     </div>
   );
@@ -48,9 +54,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Routes>
-          <Route path="*" element={<AppContent />} />
-        </Routes>
+        <AppContent />
       </Router>
     </div>
   );
