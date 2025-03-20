@@ -269,7 +269,7 @@ function SearchResults() {
       <div className="search-results-header">
         <div className="container">
           <div className="results-summary">
-            <h1 className="results-count">73 occasions gevonden</h1>
+            <h1 className="results-count">9 occasions gevonden</h1>
             {activeFilters.brands.length > 0 ||
             activeFilters.status.length > 0 ||
             searchQuery ? (
