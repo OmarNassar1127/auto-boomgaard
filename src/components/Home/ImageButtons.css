@@ -3,12 +3,25 @@
   padding: 2rem 0;
 }
 
+.col-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
 .image-button {
   position: relative;
   margin-bottom: 1.5rem;
   height: 0;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   overflow: hidden;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image-button img {
