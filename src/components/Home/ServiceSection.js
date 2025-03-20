@@ -20,8 +20,8 @@ function ServiceSection() {
           
           <div className="service-image">
             <img 
-              src="https://www.akker.nl/wp-content/uploads/2019/08/Audi-R8-Occasion.png" 
-              alt="Audi R8 Occasion" 
+              src={require('../../assets/images/mercedes.png')} 
+              alt="Mercedes" 
             />
           </div>
         </div>
