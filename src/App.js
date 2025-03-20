@@ -20,6 +20,7 @@ function AppContent() {
     } else if (location.pathname === '/aanbod/') {
       setCurrentPage('search');
     } else if (location.pathname.startsWith('/auto/')) {
+      // Also set search page style for car detail pages
       setCurrentPage('search');
     }
   }, [location.pathname]);

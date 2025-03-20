@@ -102,8 +102,7 @@ function CarDetail() {
 
   return (
     <div className="car-detail-page">
-      {/* Black navbar placeholder */}
-      <div className="detail-page-navbar"></div>
+      {/* We don't need the navbar placeholder anymore since Header component is already included in App.js */}
 
       <div className="container">
         {/* Breadcrumb */}
