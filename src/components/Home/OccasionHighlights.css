@@ -91,31 +91,30 @@
 .occasion-highlight-km {
   font-size: 14px;
   color: #999;
-  /* Added animation for appearing text */
-  animation: fadeIn 0.4s ease forwards;
+  /* No animation for these elements - they will appear with the container */
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* IMPORTANT: Changed from display:none to make transition smooth */
+/* IMPORTANT: Pure height transition for images container */
 .occasion-highlight-images {
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
-  max-height: 0;
-  opacity: 0;
   overflow: hidden;
-  transition: all 0.9s ease;
+  position: relative;
+  
+  /* Center-focused animation using scale */
+  transform: scaleY(0);
+  transform-origin: center; /* This makes it expand/collapse from center */
+  transition: transform 0.5s ease;
+  
+  /* Set a fixed height for the images container */
+  height: 110px; /* Adjust based on your actual image heights */
 }
 
-/* Show additional images with smooth transition */
+/* Show additional images with pure extension */
 .occasion-highlight.active .occasion-highlight-images,
 .occasion-highlight:hover .occasion-highlight-images {
-  max-height: 200px; /* Adjust based on your image size */
-  opacity: 1;
+  transform: scaleY(1);
 }
 
 /* Additional images layout */
