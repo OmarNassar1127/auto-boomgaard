@@ -121,7 +121,7 @@ function Header({ onNavChange, currentPage }) {
           <nav className="nav-extra">
             <ul className="hide-print">
               <li className="menu-item-occasions">
-                <a href="/" onClick={(e) => handleNavigation('search', e)}>
+                <a href="/">
                   <span className="label">HOME</span>
                 </a>
               </li>
