@@ -124,7 +124,7 @@ function HeroSection() {
             </div>
           </div>
           
-          <div className="col-row stick-to-bottom-wrapper">
+          <div className="col-row" style={{position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)'}}>
             <div className="col col-24">
               <div className="col-wrapper">
                 <div className="item text item-non-editable-text scroll-down-wrapper">

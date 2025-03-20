@@ -5,7 +5,7 @@ function ImageButtons() {
   return (
     <div className="image-buttons-section bg-gradient-hard-to-dark no-margin-bottom">
       <div className="col-row">
-        <div className="col" style={{ width: '40%', maxWidth: '500px', margin: '0 15px' }}>
+        <div className="col">
           <div className="col-wrapper">
             <div className="item image image-button">
               <img
@@ -21,7 +21,7 @@ function ImageButtons() {
             </div>
           </div>
         </div>
-        <div className="col" style={{ width: '40%', maxWidth: '500px', margin: '0 15px' }}>
+        <div className="col">
           <div className="col-wrapper">
             <div className="item image image-button">
               <img
