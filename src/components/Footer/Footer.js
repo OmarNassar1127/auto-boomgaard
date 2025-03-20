@@ -121,7 +121,7 @@ function Footer() {
             </a>
             <a
               className="btn"
-              href="https://www.google.com/maps/dir//Autobedrijf+T.+van+den+Akker,+Steenovenseweg+1B,+5681+BA+Best,+Netherlands/@51.518553,5.3301338,12z"
+              href="https://www.google.com/maps/place/Ondernemingsweg+56c,+1422+DZ+Uithoorn/@52.2428293,4.833665,15.15z/data=!4m6!3m5!1s0x47c5dff530b89c41:0x88d6aceb2e9867dc!8m2!3d52.2414381!4d4.8438476!16s%2Fg%2F11sfqn6kwj?entry=ttu&g_ep=EgoyMDI1MDMxOC4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
             >
