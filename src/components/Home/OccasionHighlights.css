@@ -1,247 +1,339 @@
+/* Import Bootstrap CSS */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Main section styling */
 .occasion-highlights-section {
+  background-color: #f8f9fa;
+  padding: 80px 0;
+  color: #212529;
+}
+
+/* Section header styling */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Card styling */
+.car-card {
   background-color: #fff;
-  padding: 40px 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid #eee;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.car-card:hover,
+.car-card.active {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
 }
 
-.occasion-cards-container,
-.occasion-highlights-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
+/* Image styling */
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
 }
 
-.tile-grid-item {
-  flex: 0 0 calc(33.333% - 10px);
-  max-width: calc(33.333% - 10px);
-  display: flex;
-  justify-content: center;
-  transition: transform 0.4s ease; /* Added transition for smooth movement */
-}
-
-.occasion-highlight {
-  display: block;
+.main-image-container {
   width: 100%;
-  max-width: 350px;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
+  height: 100%;
   position: relative;
-  transition: all 0.4s ease; /* Changed from transform to all for smoother transitions */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
-  z-index: 1; /* Base z-index */
 }
 
-/* Main image container */
-.occasion-highlight-main-image {
-  position: relative;
-  overflow: hidden; /* Added to contain image scale effect */
-}
-
-.occasion-highlight-main-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.main-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease; /* Added for image zoom effect */
+  transition: transform 0.6s ease;
 }
 
-/* Info section */
-.occasion-highlight-wrapper {
-  padding: 20px;
-}
-
-.occasion-highlight-info h3 {
-  margin: 0 0 15px 0;
-  font-weight: normal;
-}
-
-.occasion-highlight-brand {
-  display: block;
-  font-size: 24px;
-}
-
-.occasion-highlight-model {
-  display: block;
-  font-size: 16px;
-  color: #999;
-}
-
-.occasion-highlight-details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  border-top: 1px solid #e70020;
-  padding-top: 15px;
-  margin-bottom: 15px;
-}
-
-.occasion-highlight-price {
-  font-size: 16px;
-}
-
-.occasion-highlight-power,
-.occasion-highlight-km {
-  font-size: 14px;
-  color: #999;
-  /* No animation for these elements - they will appear with the container */
-}
-
-/* IMPORTANT: Pure height transition for images container */
-.occasion-highlight-images {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  overflow: hidden;
-  position: relative;
-  
-  /* Center-focused animation using scale */
-  transform: scaleY(0);
-  transform-origin: center; /* This makes it expand/collapse from center */
-  transition: transform 0.5s ease;
-  
-  /* Set a fixed height for the images container */
-  height: 110px; /* Adjust based on your actual image heights */
-}
-
-/* Show additional images with pure extension */
-.occasion-highlight.active .occasion-highlight-images,
-.occasion-highlight:hover .occasion-highlight-images {
-  transform: scaleY(1);
-}
-
-/* Additional images layout */
-.occasion-highlight-images-image {
-  width: calc(50% - 5px);
-  position: relative;
-}
-
-.occasion-highlight-images-image .object-fit-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-}
-
-.occasion-highlight-images-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* "Bekijk" link at the bottom */
-.occasion-highlight-view {
-  display: inline-flex;
-  align-items: center;
-  font-size: 14px;
-  transition: opacity 0.3s ease;
-}
-
-.svg-icon {
-  display: inline-block;
-  width: 24px;
-  height: 12px;
-  margin-left: 5px;
-  transition: transform 0.3s ease; /* Added for arrow animation */
-}
-
-.svg-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Active and hover card styling */
-.occasion-highlight.active,
-.occasion-highlight:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-  z-index: 2; /* Bring active card to front */
-}
-
-/* Image zoom effect on hover */
-.occasion-highlight:hover .occasion-highlight-main-image img {
+.car-card:hover .main-image {
   transform: scale(1.05);
 }
 
-/* Arrow animation on hover */
-.occasion-highlight:hover .svg-icon {
-  transform: translateX(5px);
+/* Thumbnail navigation */
+.thumbnail-navigation {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  padding: 15px 10px 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  visibility: hidden;
 }
 
-/* Expected occasions section */
-.expected-occasions-wrapper {
-  margin-top: 40px;
+.thumbnail-navigation.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
-.expected-occasions-wrapper h2 {
-  text-align: center;
+.thumbnail {
+  width: 60px;
+  height: 40px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 5px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail.active,
+.thumbnail:hover {
+  border-color: #e70020;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Badge styling */
+.car-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 8px 12px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.car-badge.sold {
+  background-color: #e70020;
+  color: #fff;
+}
+
+/* Card content styling */
+.card-content {
+  padding: 20px;
+}
+
+.card-brand-model {
+  margin-bottom: 15px;
+}
+
+.car-brand {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: #000;
+}
+
+.car-model {
+  font-size: 16px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Card details styling */
+.card-details {
+  border-top: 2px solid #e70020;
+  padding-top: 15px;
   margin-bottom: 20px;
 }
 
-.expected-occasions-grid {
+.details-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
-.expected-occasion {
-  background-color: #f5f5f5;
-  padding: 15px;
-  height: 100%;
+.detail-item {
+  display: flex;
+  align-items: center;
 }
 
-.expected-occasion p {
-  margin: 0;
+.detail-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-/* Loading indicator */
-.loading {
-  text-align: center;
-  padding: 40px;
+.price-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath fill='%23e70020' d='M0 112.5V422.3c0 18 10.1 35 27 41.3c87 32.5 174 10.3 261-11.9c79.8-20.3 159.6-40.7 239.3-18.9c23 6.3 48.7-9.5 48.7-33.4V89.7c0-18-10.1-35-27-41.3C462 15.9 375 38.1 288 60.3C208.2 80.6 128.4 100.9 48.7 79.1C25.6 72.8 0 88.6 0 112.5zM288 352c-44.2 0-80-43-80-96s35.8-96 80-96s80 43 80 96s-35.8 96-80 96zM64 352c35.3 0 64 28.7 64 64H64V352zm64-208c0 35.3-28.7 64-64 64V144h64z'/%3E%3C/svg%3E");
+}
+
+.power-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath fill='%23666' d='M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM471 143c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z'/%3E%3C/svg%3E");
+}
+
+.km-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23666' d='M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM256 416c35.3 0 64-28.7 64-64c0-17.4-6.9-33.1-18.1-44.6L366 161.7c5.3-12.1-.2-26.3-12.3-31.6s-26.3 .2-31.6 12.3L257.9 288c-.6 0-1.3 0-1.9 0c-35.3 0-64 28.7-64 64s28.7 64 64 64zM176 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM96 288a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm352-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM384 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z'/%3E%3C/svg%3E");
+}
+
+.detail-value {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.details-row:first-child .detail-value {
   font-size: 18px;
-  width: 100%;
+  font-weight: 700;
+  color: #e70020;
 }
 
-/* Margin utility classes */
-.margin-top-1 { margin-top: 10px; }
-.margin-top-2-tablet-m { margin-top: 20px; }
-.margin-top-3-desktop-s { margin-top: 30px; }
-.margin-bottom-2 { margin-bottom: 20px; }
+/* View button styling */
+.view-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  gap: 8px;
+}
+
+.view-button:hover {
+  background-color: #e70020;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+  fill: currentColor;
+}
+
+.view-button:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Section footer */
+.section-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-all-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  color: #000;
+  border: 2px solid #000;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  gap: 10px;
+}
+
+.view-all-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.view-all-button .arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Loading animation */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e0e0;
+  border-radius: 50%;
+  border-top-color: #e70020;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* Responsive adjustments */
-@media (max-width: 1100px) {
-  .tile-grid-item {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
+@media (max-width: 1200px) {
+  .card-image-wrapper {
+    height: 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .occasion-highlights-section {
+    padding: 60px 0;
   }
   
-  .margin-top-2-tablet-m {
-    margin-top: 20px;
+  .section-title {
+    font-size: 30px;
+  }
+  
+  .car-brand {
+    font-size: 22px;
   }
 }
 
 @media (max-width: 768px) {
-  .tile-grid-item {
-    flex: 0 0 100%;
-    max-width: 100%;
+  .card-image-wrapper {
+    height: 200px;
   }
   
-  .margin-top-1 {
-    margin-top: 10px;
+  .thumbnail {
+    width: 50px;
+    height: 34px;
   }
 }
 
-@media (min-width: 1100px) {
-  .margin-top-3-desktop-s {
-    margin-top: 30px;
+@media (max-width: 576px) {
+  .occasion-highlights-section {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 26px;
+  }
+  
+  .card-image-wrapper {
+    height: 180px;
   }
 }

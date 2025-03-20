@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import HomePage from './components/Home/HomePage';
 import SearchResults from './components/Search/SearchResults';
 import Footer from './components/Footer/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function AppContent() {
