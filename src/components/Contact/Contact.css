@@ -224,6 +224,28 @@
   border-radius: 12px;
 }
 
+.responsive-map {
+  position: relative;
+  padding-bottom: 75%; /* 4:3 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.map-landscape .responsive-map {
+  padding-bottom: 45%; /* 16:9 Aspect Ratio for landscape */
+}
+
+.responsive-map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
 .map-placeholder {
   width: 100%;
   height: 300px;
@@ -295,6 +317,10 @@
   .contact-method .icon {
     width: 45px;
     height: 45px;
+  }
+  
+  .map-landscape .responsive-map {
+    padding-bottom: 75%; /* Return to standard ratio on mobile */
   }
 }
 
