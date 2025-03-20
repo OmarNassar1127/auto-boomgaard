@@ -8,46 +8,40 @@ function ShowRoom() {
         <h2 className="showroom-title">Verwacht in onze showroom</h2>
 
         <div className="cars-grid">
-          {/* Row 1 */}
           <div className="car-item">
-            <h3 className="car-brand">Audi</h3>
-            <p className="car-model">Q8 60 TFSI e quattro (facelift)</p>
-            <p className="car-details">2025 | 1.350 km</p>
+            <h3 className="car-brand">Fiat</h3>
+            <p className="car-model">500 0.9 TwinAir Lounge | Panoramak Bluetooth PDC</p>
+            <p className="car-details">2016 | 52.460 km</p>
+          </div>
+
+          <div className="car-item">
+            <h3 className="car-brand">Volkswagen</h3>
+            <p className="car-model">Tiguan 1.4 TSI Comfortline| Panoramadak PDC Cruise Contro</p>
+            <p className="car-details">2017 | 116.995 km</p>
+          </div>
+
+          <div className="car-item">
+            <h3 className="car-brand">Mercedes-Benz</h3>
+            <p className="car-model">A 250 e AMG Night| Pano Camera Carplay Widescreen Dodeho</p>
+            <p className="car-details">2021 | 50.950 km</p>
           </div>
 
           <div className="car-item">
             <h3 className="car-brand">Audi</h3>
-            <p className="car-model">Q8 60 TFSI e quattro (facelift)</p>
-            <p className="car-details">2025 | 1.100 km</p>
+            <p className="car-model">Q5 55 TFSI-e S-Line | Pano HuD B&O ACC Matrix Trkhaak</p>
+            <p className="car-details">2021 | 65.350 km</p>
           </div>
 
           <div className="car-item">
             <h3 className="car-brand">Audi</h3>
-            <p className="car-model">RS5 Avant Johann ABT Signature Edition</p>
-            <p className="car-model-extra">(Nr. 17 van 64)</p>
-            <p className="car-details">2021 | 14.730 km</p>
-          </div>
-
-          {/* Row 2 */}
-          <div className="car-item">
-            <h3 className="car-brand">Audi</h3>
-            <p className="car-model">
-              RSQ8 ABT Signature Edition (nr. 12 van 96)
-            </p>
-            <p className="car-details">2022 | 17.700 km</p>
+            <p className="car-model">Q3 35 TFSI S edition | Camera Carplay Leder Elek. Ach</p>
+            <p className="car-details">2021 | 32.750 km</p>
           </div>
 
           <div className="car-item">
-            <h3 className="car-brand">Porsche</h3>
-            <p className="car-model">991 Targa 4 GTS</p>
-            <p className="car-details">2018 | 33.150 km</p>
-          </div>
-
-          <div className="car-item">
-            <h3 className="car-brand">Porsche</h3>
-            <p className="car-model">Panamera Turbo S E-Hybrid Sport</p>
-            <p className="car-model-extra">Turismo SportDesign</p>
-            <p className="car-details">2020 | 67.300 km</p>
+            <h3 className="car-brand">Mercedes-Benz</h3>
+            <p className="car-model">A 250 e AMG Night | Pano Multibeam Camera Widescreen Car</p>
+            <p className="car-details">2021 | 48.300 km</p>
           </div>
         </div>
       </div>
