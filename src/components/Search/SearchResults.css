@@ -2,13 +2,14 @@
 .search-results-page {
   background-color: #f8f8f8;
   min-height: 100vh;
-  padding-top: 0; /* Removed padding as we'll handle the header differently */
+  padding-top: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
 /* Modified Header for Search Results Page */
@@ -25,202 +26,316 @@
 /* Header Section */
 .search-results-header {
   background-color: #ffffff;
-  padding: 30px 0;
-  border-bottom: 1px solid #eaeaea;
+  padding: 35px 0;
   margin-top: 80px; /* Account for fixed navbar */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.results-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
 .results-count {
   font-size: 32px;
   font-weight: 600;
-  margin: 0 0 20px 0;
+  margin: 0;
   color: #000;
 }
 
-/* Search Filters */
-.search-filters {
+.clear-filters {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  background-color: #fff;
-  padding: 20px 25px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.search-bar {
-  position: relative;
-  width: 100%;
-  max-width: 550px;
-}
-
-.search-input {
-  width: 100%;
-  padding: 16px 18px 16px 50px;
-  border: 1px solid #e1e1e1;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 8px 12px;
   border-radius: 4px;
-  font-size: 15px;
-  background-color: #fff;
-  outline: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.clear-filters:hover {
+  color: #000;
+  background-color: #f5f5f5;
+}
+
+.clear-filters svg {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.clear-filters:hover svg {
+  opacity: 1;
+}
+
+/* Modern Search Controls */
+.search-controls {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.search-form {
+  display: flex;
+  flex: 1;
+  gap: 15px;
+}
+
+.search-input-container {
   position: relative;
-  z-index: 0; /* Ensures the input is below the icon */
+  flex: 1;
 }
 
-.search-input:focus {
-  border-color: #000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.search-button {
+.search-icon {
   position: absolute;
   left: 18px;
   top: 50%;
   transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-input {
+  width: 100%;
+  height: 54px;
+  padding: 0 18px 0 50px;
+  border: 2px solid #e9e9e9;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+  position: relative;
+  z-index: 0;
+  color: #333;
+}
+
+.search-input:focus {
+  border-color: #000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.clear-search {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
-  color: #888;
+  color: #aaa;
   cursor: pointer;
-  padding: 0;
+  padding: 8px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none; /* Prevents clicks on the icon itself */
-  z-index: 1; /* Ensures the icon stays above the input */
+  transition: all 0.2s ease;
+  z-index: 1;
 }
 
-.sort-dropdown {
+.clear-search:hover {
+  color: #555;
+  background-color: #f5f5f5;
+}
+
+.search-submit {
+  background-color: #000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.search-submit:hover {
+  background-color: #222;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Modern Sort Control */
+.sort-control {
+  min-width: 220px;
   position: relative;
-  z-index: 10;
+}
+
+.sort-wrapper {
+  position: relative;
+  height: 100%;
 }
 
 .sort-button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 18px;
-  min-width: 250px;
-  border: 1px solid #e1e1e1;
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  border: 2px solid #e9e9e9;
+  border-radius: 8px;
   background-color: #fff;
   font-size: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 500;
+  color: #333;
 }
 
-.sort-button:hover {
+.sort-button:hover, .sort-button:focus {
   border-color: #000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-.sort-button svg {
-  margin-left: 12px;
+.sort-label {
+  margin-right: 10px;
+}
+
+.sort-icon {
+  transition: transform 0.3s ease;
+}
+
+.sort-icon.open {
+  transform: rotate(180deg);
 }
 
 .sort-dropdown-menu {
   position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 5px;
+  top: calc(100% + 10px);
+  left: 0;
   width: 100%;
   background-color: #fff;
-  border: 1px solid #e1e1e1;
-  border-radius: 4px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.1);
   z-index: 1000;
   overflow: hidden;
+  animation: fadeIn 0.2s ease;
+  border: 1px solid #eee;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .sort-dropdown-menu button {
   display: block;
   width: 100%;
   text-align: left;
-  padding: 14px 18px;
+  padding: 14px 20px;
   border: none;
   background: none;
   font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-family: 'Montserrat', Arial, sans-serif;
+  transition: all 0.2s ease;
+  color: #555;
 }
 
 .sort-dropdown-menu button:hover {
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
+  color: #000;
 }
 
-/* Filter Buttons */
-.filter-buttons {
-  margin-bottom: 25px;
-  padding: 5px 0;
-  border-top: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea;
-  background-color: #fff;
-}
-
-.filter-buttons .container {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-}
-
-.filter-group-title {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 12px;
+.sort-dropdown-menu button.active {
+  background-color: #f0f0f0;
+  color: #000;
   font-weight: 600;
+}
+
+/* Filter Chips Section */
+.filter-section {
+  background-color: #fff;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.filter-category {
+  margin-bottom: 20px;
+}
+
+.filter-category:last-child {
+  margin-bottom: 0;
+}
+
+.filter-heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  margin: 0 0 12px 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.filter-group {
+.filter-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 10px;
 }
 
-.filter-button {
-  padding: 12px 22px;
-  border: 2px solid #e1e1e1;
-  border-radius: 4px;
-  background-color: #fff;
+.filter-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background-color: #f0f0f0;
+  border: none;
   font-size: 14px;
   font-weight: 500;
+  color: #555;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-family: 'Montserrat', Arial, sans-serif;
 }
 
-.filter-button:hover {
-  border-color: #000;
+.filter-chip:hover {
+  background-color: #e0e0e0;
+  color: #333;
 }
 
-.filter-button.active {
+.filter-chip.active {
   background-color: #000;
   color: #fff;
-  border-color: #000;
+}
+
+.chip-close {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.filter-chip:hover .chip-close {
+  opacity: 1;
 }
 
 /* Vehicle Grid */
 .vehicle-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
   gap: 30px;
-  padding: 40px 0;
+  padding: 20px 0 60px;
 }
 
 /* Vehicle Card */
 .vehicle-card {
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   height: 100%;
@@ -229,8 +344,8 @@
 }
 
 .vehicle-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
 }
 
 .vehicle-image-container {
@@ -246,7 +361,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
 .vehicle-card:hover .vehicle-image {
@@ -257,28 +372,28 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  padding: 8px 14px;
-  border-radius: 3px;
+  padding: 8px 16px;
+  border-radius: 5px;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-family: 'Montserrat', Arial, sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  backdrop-filter: blur(4px);
 }
 
 .vehicle-status.verwacht {
-  background-color: #111;
+  background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
 }
 
 .vehicle-status.verkocht {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
 }
 
 .vehicle-status.carrosserie {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
 }
 
@@ -295,9 +410,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   color: #999;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  backdrop-filter: blur(4px);
 }
 
 .favorite-button svg {
@@ -305,7 +421,7 @@
   height: 22px;
 }
 
-.favorite-button:hover, .favorite-button.active {
+.favorite-button:hover {
   color: #000;
   transform: scale(1.1);
   background-color: #fff;
@@ -332,7 +448,6 @@
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  font-family: 'Montserrat', Arial, sans-serif;
   color: #000;
 }
 
@@ -342,7 +457,6 @@
   font-weight: 400;
   color: #555;
   margin-top: 4px;
-  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .vehicle-specs {
@@ -354,9 +468,8 @@
 .vehicle-price {
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: #000;
-  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .vehicle-meta {
@@ -364,12 +477,11 @@
   gap: 20px;
   color: #555;
   font-size: 15px;
-  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .vehicle-year, .vehicle-mileage {
   position: relative;
-  padding-left: 22px;
+  padding-left: 24px;
 }
 
 .vehicle-year:before, .vehicle-mileage:before {
@@ -403,21 +515,22 @@
   text-decoration: none;
   font-size: 15px;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   padding: 14px 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   margin-top: auto;
-  font-family: 'Montserrat', Arial, sans-serif;
   letter-spacing: 0.5px;
 }
 
 .vehicle-link svg {
   margin-left: 8px;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .vehicle-link:hover {
   background-color: #333;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 .vehicle-link:hover svg {
@@ -425,65 +538,140 @@
 }
 
 /* Loading state */
-.loading {
+.loading-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 300px;
+  gap: 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
   font-size: 18px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* No results state */
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
   color: #666;
 }
 
+.no-results svg {
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.no-results p {
+  font-size: 18px;
+  margin: 0 0 30px 0;
+}
+
+.reset-search {
+  padding: 12px 24px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-search:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
 /* Responsive adjustments */
-@media (max-width: 1024px) {
-  .search-filters {
+@media (max-width: 1199px) {
+  .vehicle-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .search-controls {
     flex-direction: column;
-    align-items: stretch;
+  }
+  
+  .sort-control {
+    width: 100%;
+  }
+}
+
+@media (max-width: 991px) {
+  .results-count {
+    font-size: 28px;
+  }
+  
+  .search-results-header {
+    padding: 25px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .vehicle-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 20px;
+  }
+  
+  .results-summary {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 15px;
   }
   
-  .search-bar {
-    max-width: 100%;
-  }
-  
-  .sort-dropdown {
-    width: 100%;
-  }
-  
-  .sort-button {
-    width: 100%;
-  }
-  
-  .vehicle-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .filter-group {
-    overflow-x: auto;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-  }
-  
-  .filter-button {
-    white-space: nowrap;
-  }
-  
-  .vehicle-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
   .results-count {
     font-size: 24px;
   }
   
+  .search-input {
+    height: 50px;
+    font-size: 15px;
+  }
+  
+  .search-submit {
+    font-size: 15px;
+    padding: 0 20px;
+  }
+  
+  .filter-chips {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .filter-chip {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
   .vehicle-details {
-    padding: 15px;
+    padding: 18px;
   }
   
   .vehicle-brand {
@@ -496,5 +684,14 @@
   
   .vehicle-price {
     font-size: 20px;
+  }
+  
+  .search-form {
+    flex-direction: column;
+  }
+  
+  .search-submit {
+    width: 100%;
+    height: 48px;
   }
 }

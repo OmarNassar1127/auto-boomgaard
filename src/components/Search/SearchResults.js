@@ -6,6 +6,7 @@ function SearchResults() {
   const [loading, setLoading] = useState(true);
   const [sortOption, setSortOption] = useState('newest');
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [activeFilters, setActiveFilters] = useState({
     brands: [],
     status: []
@@ -121,36 +122,38 @@ function SearchResults() {
     setIsSortDropdownOpen(false);
   };
 
-  const toggleBrandFilter = (brand) => {
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // In a real app, this would trigger a search API call
+    console.log("Searching for:", searchQuery);
+  };
+
+  const toggleFilter = (type, value) => {
     setActiveFilters(prevFilters => {
-      if (prevFilters.brands.includes(brand)) {
+      if (prevFilters[type].includes(value)) {
         return {
           ...prevFilters,
-          brands: prevFilters.brands.filter(b => b !== brand)
+          [type]: prevFilters[type].filter(item => item !== value)
         };
       } else {
         return {
           ...prevFilters,
-          brands: [...prevFilters.brands, brand]
+          [type]: [...prevFilters[type], value]
         };
       }
     });
   };
 
-  const toggleStatusFilter = (status) => {
-    setActiveFilters(prevFilters => {
-      if (prevFilters.status.includes(status)) {
-        return {
-          ...prevFilters,
-          status: prevFilters.status.filter(s => s !== status)
-        };
-      } else {
-        return {
-          ...prevFilters,
-          status: [...prevFilters.status, status]
-        };
-      }
+  const clearFilters = () => {
+    setActiveFilters({
+      brands: [],
+      status: []
     });
+    setSearchQuery('');
   };
 
   const toggleFavorite = (id) => {
@@ -170,7 +173,11 @@ function SearchResults() {
                               (vehicle.status === '' && activeFilters.status.includes('Beschikbaar')) ||
                               (vehicle.status !== '' && activeFilters.status.includes(vehicle.status));
     
-    return passedBrandFilter && passedStatusFilter;
+    const passedSearchFilter = !searchQuery || 
+                              vehicle.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              vehicle.model.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    return passedBrandFilter && passedStatusFilter && passedSearchFilter;
   });
 
   // Sort filtered vehicles
@@ -198,6 +205,19 @@ function SearchResults() {
     }
   });
 
+  const getSortLabel = (option) => {
+    switch(option) {
+      case 'newest': return 'Nieuwste eerst';
+      case 'price-asc': return 'Prijs oplopend';
+      case 'price-desc': return 'Prijs aflopend';
+      case 'year-desc': return 'Bouwjaar nieuw-oud';
+      case 'year-asc': return 'Bouwjaar oud-nieuw';
+      case 'mileage-asc': return 'Kilometerstand oplopend';
+      case 'mileage-desc': return 'Kilometerstand aflopend';
+      default: return 'Sorteer op';
+    }
+  };
+
   return (
     <div className="search-results-page">
       {/* Black navbar specifically for search page */}
@@ -207,113 +227,205 @@ function SearchResults() {
 
       <div className="search-results-header">
         <div className="container">
-          <h1 className="results-count">73 occasions gevonden</h1>
-          
-          {/* Search filters section */}
-          <div className="search-filters">
-            <div className="search-bar">
-              <input 
-                type="text" 
-                placeholder="Zoek op merk, model of trefwoord" 
-                className="search-input" 
-              />
-              <div className="search-button">
+          <div className="results-summary">
+            <h1 className="results-count">73 occasions gevonden</h1>
+            {activeFilters.brands.length > 0 || activeFilters.status.length > 0 || searchQuery ? 
+              <button className="clear-filters" onClick={clearFilters}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                Filters wissen
+              </button> : null
+            }
+          </div>
+          
+          {/* Modern search section */}
+          <div className="search-controls">
+            <form className="search-form" onSubmit={handleSearchSubmit}>
+              <div className="search-input-container">
+                <svg className="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
+                <input 
+                  type="text" 
+                  placeholder="Zoek op merk, model of trefwoord" 
+                  className="search-input" 
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+                {searchQuery && (
+                  <button 
+                    type="button" 
+                    className="clear-search" 
+                    onClick={() => setSearchQuery('')}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                )}
               </div>
-            </div>
-
-            <div className="sort-dropdown">
-              <button className="sort-button" onClick={toggleSortDropdown}>
-                <span>Sorteren op: {
-                  sortOption === 'newest' ? 'Nieuwste eerst' :
-                  sortOption === 'price-asc' ? 'Prijs oplopend' :
-                  sortOption === 'price-desc' ? 'Prijs aflopend' :
-                  sortOption === 'year-desc' ? 'Bouwjaar nieuw-oud' :
-                  sortOption === 'year-asc' ? 'Bouwjaar oud-nieuw' :
-                  sortOption === 'mileage-asc' ? 'Kilometerstand oplopend' :
-                  'Kilometerstand aflopend'
-                }</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
+              <button type="submit" className="search-submit">
+                Zoeken
               </button>
-              
-              {isSortDropdownOpen && (
-                <div className="sort-dropdown-menu">
-                  <button onClick={() => handleSortChange('newest')}>Nieuwste eerst</button>
-                  <button onClick={() => handleSortChange('price-asc')}>Prijs oplopend</button>
-                  <button onClick={() => handleSortChange('price-desc')}>Prijs aflopend</button>
-                  <button onClick={() => handleSortChange('year-desc')}>Bouwjaar nieuw-oud</button>
-                  <button onClick={() => handleSortChange('year-asc')}>Bouwjaar oud-nieuw</button>
-                  <button onClick={() => handleSortChange('mileage-asc')}>Kilometerstand oplopend</button>
-                  <button onClick={() => handleSortChange('mileage-desc')}>Kilometerstand aflopend</button>
-                </div>
-              )}
+            </form>
+
+            <div className="sort-control">
+              <div className="sort-wrapper">
+                <button 
+                  className="sort-button" 
+                  onClick={toggleSortDropdown}
+                  aria-expanded={isSortDropdownOpen}
+                >
+                  <span className="sort-label">{getSortLabel(sortOption)}</span>
+                  <svg className={`sort-icon ${isSortDropdownOpen ? 'open' : ''}`} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                
+                {isSortDropdownOpen && (
+                  <div className="sort-dropdown-menu">
+                    <button onClick={() => handleSortChange('newest')} className={sortOption === 'newest' ? 'active' : ''}>
+                      Nieuwste eerst
+                    </button>
+                    <button onClick={() => handleSortChange('price-asc')} className={sortOption === 'price-asc' ? 'active' : ''}>
+                      Prijs oplopend
+                    </button>
+                    <button onClick={() => handleSortChange('price-desc')} className={sortOption === 'price-desc' ? 'active' : ''}>
+                      Prijs aflopend
+                    </button>
+                    <button onClick={() => handleSortChange('year-desc')} className={sortOption === 'year-desc' ? 'active' : ''}>
+                      Bouwjaar nieuw-oud
+                    </button>
+                    <button onClick={() => handleSortChange('year-asc')} className={sortOption === 'year-asc' ? 'active' : ''}>
+                      Bouwjaar oud-nieuw
+                    </button>
+                    <button onClick={() => handleSortChange('mileage-asc')} className={sortOption === 'mileage-asc' ? 'active' : ''}>
+                      Kilometerstand oplopend
+                    </button>
+                    <button onClick={() => handleSortChange('mileage-desc')} className={sortOption === 'mileage-desc' ? 'active' : ''}>
+                      Kilometerstand aflopend
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Filter buttons */}
-      <div className="filter-buttons">
+      {/* Filter chips */}
+      <div className="filter-section">
         <div className="container">
-          <div className="filter-group-title">Merk</div>
-          <div className="filter-group brand-filters">
-            <button 
-              className={`filter-button ${activeFilters.brands.includes('Audi') ? 'active' : ''}`}
-              onClick={() => toggleBrandFilter('Audi')}
-            >
-              Audi
-            </button>
-            <button 
-              className={`filter-button ${activeFilters.brands.includes('Bentley') ? 'active' : ''}`}
-              onClick={() => toggleBrandFilter('Bentley')}
-            >
-              Bentley
-            </button>
-            <button 
-              className={`filter-button ${activeFilters.brands.includes('Porsche') ? 'active' : ''}`}
-              onClick={() => toggleBrandFilter('Porsche')}
-            >
-              Porsche
-            </button>
-            <button 
-              className={`filter-button ${activeFilters.brands.includes('Overig') ? 'active' : ''}`}
-              onClick={() => toggleBrandFilter('Overig')}
-            >
-              Overig
-            </button>
+          <div className="filter-category">
+            <h3 className="filter-heading">Merk</h3>
+            <div className="filter-chips">
+              <button 
+                className={`filter-chip ${activeFilters.brands.includes('Audi') ? 'active' : ''}`}
+                onClick={() => toggleFilter('brands', 'Audi')}
+              >
+                <span>Audi</span>
+                {activeFilters.brands.includes('Audi') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+              <button 
+                className={`filter-chip ${activeFilters.brands.includes('Bentley') ? 'active' : ''}`}
+                onClick={() => toggleFilter('brands', 'Bentley')}
+              >
+                <span>Bentley</span>
+                {activeFilters.brands.includes('Bentley') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+              <button 
+                className={`filter-chip ${activeFilters.brands.includes('Porsche') ? 'active' : ''}`}
+                onClick={() => toggleFilter('brands', 'Porsche')}
+              >
+                <span>Porsche</span>
+                {activeFilters.brands.includes('Porsche') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+              <button 
+                className={`filter-chip ${activeFilters.brands.includes('Overig') ? 'active' : ''}`}
+                onClick={() => toggleFilter('brands', 'Overig')}
+              >
+                <span>Overig</span>
+                {activeFilters.brands.includes('Overig') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
           
-          <div className="filter-group-title">Status</div>
-          <div className="filter-group status-filters">
-            <button 
-              className={`filter-button ${activeFilters.status.includes('Beschikbaar') ? 'active' : ''}`}
-              onClick={() => toggleStatusFilter('Beschikbaar')}
-            >
-              Beschikbaar
-            </button>
-            <button 
-              className={`filter-button ${activeFilters.status.includes('Verwacht') ? 'active' : ''}`}
-              onClick={() => toggleStatusFilter('Verwacht')}
-            >
-              Verwacht
-            </button>
-            <button 
-              className={`filter-button ${activeFilters.status.includes('Verkocht') ? 'active' : ''}`}
-              onClick={() => toggleStatusFilter('Verkocht')}
-            >
-              Verkocht
-            </button>
-            <button 
-              className={`filter-button ${activeFilters.status.includes('Carrosserie') ? 'active' : ''}`}
-              onClick={() => toggleStatusFilter('Carrosserie')}
-            >
-              Carrosserie
-            </button>
+          <div className="filter-category">
+            <h3 className="filter-heading">Status</h3>
+            <div className="filter-chips">
+              <button 
+                className={`filter-chip ${activeFilters.status.includes('Beschikbaar') ? 'active' : ''}`}
+                onClick={() => toggleFilter('status', 'Beschikbaar')}
+              >
+                <span>Beschikbaar</span>
+                {activeFilters.status.includes('Beschikbaar') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+              <button 
+                className={`filter-chip ${activeFilters.status.includes('Verwacht') ? 'active' : ''}`}
+                onClick={() => toggleFilter('status', 'Verwacht')}
+              >
+                <span>Verwacht</span>
+                {activeFilters.status.includes('Verwacht') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+              <button 
+                className={`filter-chip ${activeFilters.status.includes('Verkocht') ? 'active' : ''}`}
+                onClick={() => toggleFilter('status', 'Verkocht')}
+              >
+                <span>Verkocht</span>
+                {activeFilters.status.includes('Verkocht') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+              <button 
+                className={`filter-chip ${activeFilters.status.includes('Carrosserie') ? 'active' : ''}`}
+                onClick={() => toggleFilter('status', 'Carrosserie')}
+              >
+                <span>Carrosserie</span>
+                {activeFilters.status.includes('Carrosserie') && (
+                  <svg className="chip-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -321,7 +433,22 @@ function SearchResults() {
       <div className="search-results-content">
         <div className="container">
           {loading ? (
-            <div className="loading">Zoeken naar occasions...</div>
+            <div className="loading-container">
+              <div className="loading-spinner"></div>
+              <div className="loading-text">Zoeken naar occasions...</div>
+            </div>
+          ) : sortedVehicles.length === 0 ? (
+            <div className="no-results">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+              <p>Geen resultaten gevonden voor de huidige zoekcriteria.</p>
+              <button className="reset-search" onClick={clearFilters}>
+                Filters wissen
+              </button>
+            </div>
           ) : (
             <div className="vehicle-grid">
               {sortedVehicles.map(vehicle => (
