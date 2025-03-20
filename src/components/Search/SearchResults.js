@@ -456,12 +456,12 @@ function SearchResults() {
               </button>
               <button
                 className={`filter-chip ${
-                  activeFilters.brands.includes("Bentley") ? "active" : ""
+                  activeFilters.brands.includes("Fiat") ? "active" : ""
                 }`}
-                onClick={() => toggleFilter("brands", "Bentley")}
+                onClick={() => toggleFilter("brands", "Fiat")}
               >
-                <span>Bentley</span>
-                {activeFilters.brands.includes("Bentley") && (
+                <span>Fiat</span>
+                {activeFilters.brands.includes("Fiat") && (
                   <svg
                     className="chip-close"
                     xmlns="http://www.w3.org/2000/svg"
@@ -481,12 +481,12 @@ function SearchResults() {
               </button>
               <button
                 className={`filter-chip ${
-                  activeFilters.brands.includes("Porsche") ? "active" : ""
+                  activeFilters.brands.includes("Mercedes") ? "active" : ""
                 }`}
-                onClick={() => toggleFilter("brands", "Porsche")}
+                onClick={() => toggleFilter("brands", "Mercedes")}
               >
-                <span>Porsche</span>
-                {activeFilters.brands.includes("Porsche") && (
+                <span>Mercedes</span>
+                {activeFilters.brands.includes("Mercedes") && (
                   <svg
                     className="chip-close"
                     xmlns="http://www.w3.org/2000/svg"
@@ -506,12 +506,12 @@ function SearchResults() {
               </button>
               <button
                 className={`filter-chip ${
-                  activeFilters.brands.includes("Overig") ? "active" : ""
+                  activeFilters.brands.includes("Volkswagen") ? "active" : ""
                 }`}
-                onClick={() => toggleFilter("brands", "Overig")}
+                onClick={() => toggleFilter("brands", "Volkswagen")}
               >
-                <span>Overig</span>
-                {activeFilters.brands.includes("Overig") && (
+                <span>Volkswagen</span>
+                {activeFilters.brands.includes("Volkswagen") && (
                   <svg
                     className="chip-close"
                     xmlns="http://www.w3.org/2000/svg"
