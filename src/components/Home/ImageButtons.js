@@ -25,7 +25,7 @@ function ImageButtons() {
           <div className="col-wrapper">
             <div className="item image image-button">
               <img
-                src="https://www.akker.nl/imageresizer/w1200q90/wp-content/uploads/2019/08/DGT-Closeup-bijna-inhalen.jpg"
+                src="https://prod.pictures.autoscout24.net/listing-images/0df962f4-d89b-4063-83b5-cb8493de7f79_ae145c77-7a3e-488d-9ff5-b69ef4665209.jpg/480x360.webp"
                 alt="Over Auto Boomgaard"
               />
               <a href="/over-vd-akker/" className="image-button-box">
