@@ -109,7 +109,7 @@ function HeroSection() {
           <div className="hero-content">
             <div className="item text">
               <h1>Premium specialist in <span className="dp-block-tablet-m">
-                Audi, Bentley en Porsche
+                Audi, Mercedes en Volkswagen
               </span></h1>
               <p>
                 <a className="btn btn-no-border btn-light link-with-icon" href="/aanbod/">

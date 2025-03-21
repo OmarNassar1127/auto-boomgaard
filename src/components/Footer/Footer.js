@@ -76,8 +76,8 @@ function Footer() {
               Premium specialist in{" "}
               <span>
                 <a href="/aanbod/audi/">Audi</a>,{" "}
-                <a href="/aanbod/bentley/">Bentley</a> &amp;{" "}
-                <a href="/aanbod/porsche/">Porsche</a>
+                <a href="/aanbod/mercedes/">Mercedes-Benz</a> &amp;{" "}
+                <a href="/aanbod/volkswagen/">Volkswagen</a>
               </span>
             </p>
           </div>
