@@ -94,7 +94,7 @@ function CarDetail() {
           <div className="not-found-container">
             <h2>Voertuig niet gevonden</h2>
             <p>Het voertuig waar je naar zoekt is niet beschikbaar.</p>
-            <Link to="/aanbod/" className="back-button">
+            <Link to="#/aanbod/" className="back-button">
               Terug naar zoekresultaten
             </Link>
           </div>
@@ -110,7 +110,7 @@ function CarDetail() {
       <div className="container">
         {/* Breadcrumb */}
         <div className="breadcrumb">
-          <Link to="/">Home</Link> /<Link to="/aanbod/">Occasions</Link> /
+          <Link to="/">Home</Link> /<Link to="#/aanbod/">Occasions</Link> /
           <span>{`${vehicle.brand} ${vehicle.model}`}</span>
         </div>
 
@@ -462,7 +462,7 @@ function CarDetail() {
 
         {/* Back button */}
         <div className="back-section">
-          <Link to="/aanbod/" className="back-button">
+          <Link to="#/aanbod/" className="back-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

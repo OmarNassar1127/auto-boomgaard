@@ -240,7 +240,7 @@ function OccasionHighlights() {
         )}
 
         <div className="section-footer">
-          <Link to="/aanbod/" className="view-all-button">
+          <Link to="#/aanbod/" className="view-all-button">
             Bekijk alle occasions
             <svg
               className="arrow-icon"
