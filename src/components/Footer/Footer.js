@@ -184,7 +184,7 @@ function Footer() {
                   <a href="/">HOME</a>
                 </li>
                 <li>
-                  <a href="/over-vd-akker/">OVER Auto Boomgaard</a>
+                  <a href="/over-vd-akker/">OVER AUTO BOOMGAARD</a>
                 </li>
                 <li>
                   <a href="/aanbod/">AANBOD</a>
