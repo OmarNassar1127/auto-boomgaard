@@ -22,16 +22,17 @@ function AppContent() {
 
   useEffect(() => {
     // Set initial page based on URL path
-    if (location.pathname === "/") {
+    if (location.pathname === "/" || location.pathname === "") {
       setCurrentPage("home");
-    } else if (location.pathname === "/aanbod/") {
+    } else if (location.pathname === "/aanbod/" || location.pathname === "/aanbod") {
       setCurrentPage("search");
     } else if (location.pathname.startsWith("/auto/")) {
       // Also set search page style for car detail pages
       setCurrentPage("search");
-    } else if (location.pathname === "#/contact/") {
+    } else if (location.pathname === "/contact/" || location.pathname === "/contact") {
       setCurrentPage("contact");
     }
+    console.log("Current pathname:", location.pathname);
   }, [location.pathname]);
 
   // Handle navigation and URL changes
@@ -51,9 +52,9 @@ function AppContent() {
       <Header onNavChange={handleNavChange} currentPage={currentPage} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="#/aanbod/" element={<SearchResults />} />
+        <Route path="/aanbod/" element={<SearchResults />} />
         <Route path="/auto/:id" element={<CarDetail />} />
-        <Route path="#/contact/" element={<Contact />} />
+        <Route path="/contact/" element={<Contact />} />
       </Routes>
       <Footer />
     </div>
