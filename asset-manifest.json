@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/auto-boomgaard/static/css/main.5989aa61.css",
-    "main.js": "/auto-boomgaard/static/js/main.764bf514.js",
+    "main.js": "/auto-boomgaard/static/js/main.13a63a97.js",
     "static/js/453.d1790fab.chunk.js": "/auto-boomgaard/static/js/453.d1790fab.chunk.js",
     "static/media/mercedes.png": "/auto-boomgaard/static/media/mercedes.fbef330f084e4a0e11d8.png",
     "index.html": "/auto-boomgaard/index.html",
     "main.5989aa61.css.map": "/auto-boomgaard/static/css/main.5989aa61.css.map",
-    "main.764bf514.js.map": "/auto-boomgaard/static/js/main.764bf514.js.map",
+    "main.13a63a97.js.map": "/auto-boomgaard/static/js/main.13a63a97.js.map",
     "453.d1790fab.chunk.js.map": "/auto-boomgaard/static/js/453.d1790fab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5989aa61.css",
-    "static/js/main.764bf514.js"
+    "static/js/main.13a63a97.js"
   ]
 }
