@@ -26,17 +26,17 @@
 }
 
 /* Main Content */
-.main-content {
-  margin-bottom: 60px;
+.container > .row {
+  margin-bottom: 30px;
 }
 
+/* Content Block */
 .content-block {
   background-color: #fff;
   border-radius: 12px;
   padding: 40px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   height: 100%;
-  margin-bottom: 30px;
 }
 
 .section-title {
@@ -59,8 +59,9 @@
 }
 
 /* Contact Form */
-.contact-form-container .content-block {
-  height: auto;
+.content-block {
+  height: 100%;
+  margin-bottom: 20px;
 }
 
 .form-label {
@@ -291,6 +292,7 @@
     padding: 30px;
     margin-bottom: 30px;
   }
+  /* No specialized mobile styles needed for form layout as Bootstrap handles it */
 }
 
 @media (max-width: 767px) {

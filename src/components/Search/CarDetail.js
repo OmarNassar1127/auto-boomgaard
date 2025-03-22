@@ -125,30 +125,30 @@ function CarDetail() {
           </div>
         </div>
 
-        {/* Image gallery */}
-        <div className="image-gallery-section">
-          <div className="main-image-container">
-            <img
-              src={vehicle.images[activeImage]}
-              alt={`${vehicle.brand} ${vehicle.model}`}
-              className="main-image"
-            />
-          </div>
-          <div className="thumbnail-container">
-            {vehicle.images.map((image, index) => (
-              <div
-                key={index}
-                className={`thumbnail ${activeImage === index ? "active" : ""}`}
-                onClick={() => setActiveImage(index)}
-              >
-                <img src={image} alt={`Thumbnail ${index + 1}`} />
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Content grid */}
         <div className="content-grid">
+          {/* Image gallery - placed inside the content grid */}
+          <div className="image-gallery-section" style={{ gridArea: 'image' }}>
+            <div className="main-image-container">
+              <img
+                src={vehicle.images[activeImage]}
+                alt={`${vehicle.brand} ${vehicle.model}`}
+                className="main-image"
+              />
+            </div>
+            <div className="thumbnail-container">
+              {vehicle.images.map((image, index) => (
+                <div
+                  key={index}
+                  className={`thumbnail ${activeImage === index ? "active" : ""}`}
+                  onClick={() => setActiveImage(index)}
+                >
+                  <img src={image} alt={`Thumbnail ${index + 1}`} />
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="main-content">
             {/* Key specs */}
             <div className="section key-specs">
@@ -338,7 +338,7 @@ function CarDetail() {
             </div>
           </div>
 
-          <div className="sidebar">
+          <div className="sidebar" style={{ gridArea: 'sidebar' }}>
             {/* Contact box */}
             <div className="contact-box">
               <h3>Interesse in deze auto?</h3>

@@ -66,9 +66,8 @@ function Contact() {
       </div>
 
       <Container>
-        <Row className="main-content">
-          <Col lg={7} className="contact-form-container">
-            
+        <Row>
+          <Col md={6}>
             <div className="content-block">
               <h2 className="section-title">Stuur ons een bericht</h2>
 
@@ -208,7 +207,7 @@ function Contact() {
             </div>
           </Col>
 
-          <Col lg={5} className="contact-info-container">
+          <Col md={6}>
             <div className="content-block contact-info">
               <h2 className="section-title">Contactgegevens</h2>
 
@@ -337,13 +336,13 @@ function Contact() {
               <h2 className="section-title">Onze Locatie</h2>
               <div className="map-container map-landscape">
                 <div className="responsive-map">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.1482211664147!2d4.841272700000001!3d52.2414381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5dff530b89c41%3A0x88d6aceb2e9867dc!2sOndernemingsweg%2056c%2C%201422%20DZ%20Uithoorn!5e0!3m2!1sen!2snl!4v1711037980123!5m2!1sen!2snl" 
-                    width="600" 
-                    height="450" 
-                    style={{ border: 0 }} 
-                    allowFullScreen="" 
-                    loading="lazy" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.1482211664147!2d4.841272700000001!3d52.2414381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5dff530b89c41%3A0x88d6aceb2e9867dc!2sOndernemingsweg%2056c%2C%201422%20DZ%20Uithoorn!5e0!3m2!1sen!2snl!4v1711037980123!5m2!1sen!2snl"
+                    width="600"
+                    height="450"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Locatie Auto Boomgaard"
                     aria-label="Google Maps locatie van Auto Boomgaard"
