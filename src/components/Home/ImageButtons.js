@@ -30,7 +30,7 @@ function ImageButtons() {
               />
               <a href="/over-vd-akker/" className="image-button-box">
                 <div className="image-button-inner">
-                  <div className="image-button-title">Over Auto Boomgaard</div>
+                  <div className="image-button-title">OVER AUTO BOOMGAARD</div>
                   <div className="image-button-subtitle"></div>
                 </div>
               </a>
