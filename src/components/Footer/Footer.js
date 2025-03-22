@@ -61,7 +61,7 @@ function Footer() {
         {/* Top section - Logo and Contact Buttons */}
         <div className="footer-top">
           <div className="footer-logo-section">
-            <a href="/" className="footer-logo">
+            <a href="#/" className="footer-logo">
               <h2 className="logo-text">Auto Boomgaard</h2>
             </a>
             <div className="header-branding">
@@ -75,9 +75,9 @@ function Footer() {
             <p className="footer-slogan">
               Premium specialist in{" "}
               <span>
-                <a href="/aanbod/audi/">Audi</a>,{" "}
-                <a href="/aanbod/mercedes/">Mercedes-Benz</a> &amp;{" "}
-                <a href="/aanbod/volkswagen/">Volkswagen</a>
+                <a href="#/aanbod/audi/">Audi</a>,{" "}
+                <a href="#/aanbod/mercedes/">Mercedes-Benz</a> &amp;{" "}
+                <a href="#/aanbod/volkswagen/">Volkswagen</a>
               </span>
             </p>
           </div>
@@ -181,30 +181,30 @@ function Footer() {
             <div className="footer-nav-columns">
               <ul className="footer-nav-list">
                 <li>
-                  <a href="/">HOME</a>
+                  <a href="#/">HOME</a>
                 </li>
                 <li>
-                  <a href="/over-vd-akker/">OVER AUTO BOOMGAARD</a>
+                  <a href="#/over-vd-akker/">OVER AUTO BOOMGAARD</a>
                 </li>
                 <li>
-                  <a href="/aanbod/">AANBOD</a>
+                  <a href="#/aanbod/">AANBOD</a>
                 </li>
                 <li>
-                  <a href="/diensten/">ONZE DIENSTEN</a>
+                  <a href="#/diensten/">ONZE DIENSTEN</a>
                 </li>
               </ul>
               <ul className="footer-nav-list">
                 <li>
-                  <a href="/nieuws-media/">NIEUWS & MEDIA</a>
+                  <a href="#/nieuws-media/">NIEUWS & MEDIA</a>
                 </li>
                 <li>
-                  <a href="/contact/">CONTACT</a>
+                  <a href="#/contact/">CONTACT</a>
                 </li>
                 <li>
-                  <a href="/privacy-policy/">PRIVACY POLICY</a>
+                  <a href="#/privacy-policy/">PRIVACY POLICY</a>
                 </li>
                 <li>
-                  <a href="/cookiebeleid/">COOKIEBELEID</a>
+                  <a href="#/cookiebeleid/">COOKIEBELEID</a>
                 </li>
               </ul>
             </div>

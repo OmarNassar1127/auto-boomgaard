@@ -106,7 +106,7 @@ function Header({ onNavChange, currentPage }) {
       <div className="">
         <div className="block-inner">
           {/* Logo */}
-          <a href="/" className="header-logo" onClick={(e) => handleNavigation('home', e)}>
+          <a href="#/" className="header-logo" onClick={(e) => handleNavigation('home', e)}>
             <div className="header-branding">
             <img 
               src={process.env.PUBLIC_URL + "/images/LogoBoomgaard.png"} 
@@ -121,12 +121,12 @@ function Header({ onNavChange, currentPage }) {
           <nav className="nav-extra">
             <ul className="hide-print">
               <li className="menu-item-occasions">
-                <a href="/">
+                <a href="#/" onClick={(e) => handleNavigation('home', e)}>
                   <span className="label">HOME</span>
                 </a>
               </li>
               <li className="menu-item-occasions">
-                <a href="/aanbod/" onClick={(e) => handleNavigation('search', e)}>
+                <a href="#/aanbod/" onClick={(e) => handleNavigation('search', e)}>
                   <span className="label">AANBOD</span>
                 </a>
               </li>
@@ -137,7 +137,7 @@ function Header({ onNavChange, currentPage }) {
                 </a>
               </li> */}
               <li className="menu-item-contact">
-                <a href="/contact/" onClick={(e) => handleNavigation('contact', e)}>
+                <a href="#/contact/" onClick={(e) => handleNavigation('contact', e)}>
                   <span className="label">CONTACT</span>
                 </a>
               </li>
@@ -228,21 +228,21 @@ function Header({ onNavChange, currentPage }) {
 
             <ul className="header-nav-list">
               <li className="menu-item menu-item-home">
-                <a href="/" title="" onClick={(e) => handleNavigation('home', e)}>
+                <a href="#/" title="" onClick={(e) => handleNavigation('home', e)}>
                   HOME
                 </a>
               </li>
               <li className="menu-item menu-item-over-boomgaard">
-                <a href="/over-boomgaard/" title="">
+                <a href="#/over-boomgaard/" title="">
                   OVER AUTO BOOMGAARD
                 </a>
               </li>
               <li className="menu-item menu-item-aanbod">
-                <a href="/aanbod/" title="" onClick={(e) => handleNavigation('search', e)}>
+                <a href="#/aanbod/" title="" onClick={(e) => handleNavigation('search', e)}>
                   AANBOD
                 </a>
                 <div className="item-car-types">
-                  <a href="/aanbod/?body=sports" className="car-type" onClick={(e) => handleNavigation('search', e)}>
+                  <a href="#/aanbod/?body=sports" className="car-type" onClick={(e) => handleNavigation('search', e)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100.8 38"
@@ -256,7 +256,7 @@ function Header({ onNavChange, currentPage }) {
                     </svg>
                     <span className="label">SPORTS</span>
                   </a>
-                  <a href="/aanbod/?body=suv" className="car-type" onClick={(e) => handleNavigation('search', e)}>
+                  <a href="#/aanbod/?body=suv" className="car-type" onClick={(e) => handleNavigation('search', e)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100.8 38"
@@ -270,7 +270,7 @@ function Header({ onNavChange, currentPage }) {
                     </svg>
                     <span className="label">SUV</span>
                   </a>
-                  <a href="/aanbod/?body=sedan" className="car-type" onClick={(e) => handleNavigation('search', e)}>
+                  <a href="#/aanbod/?body=sedan" className="car-type" onClick={(e) => handleNavigation('search', e)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100.8 38"
@@ -284,7 +284,7 @@ function Header({ onNavChange, currentPage }) {
                     </svg>
                     <span className="label">SEDAN</span>
                   </a>
-                  <a href="/aanbod/" className="car-type all" onClick={(e) => handleNavigation('search', e)}>
+                  <a href="#/aanbod/" className="car-type all" onClick={(e) => handleNavigation('search', e)}>
                     <div className="circle">
                       <svg width="38" height="38" viewBox="0 0 28px2">
                         <path d="M16.000,32.000 C7.163,32.000 0.000,24.837 0.000,16.000 C0.000,7.163 7.163,0.000 16.000,0.000 C24.837,0.000 32.000,7.163 32.000,16.000 C32.000,24.837 24.837,32.000 16.000,32.000 ZM16.000,1.792 C8.153,1.792 1.792,8.153 1.792,16.000 C1.792,23.847 8.153,30.208 16.000,30.208 C23.847,30.208 30.208,23.847 30.208,16.000 C30.208,8.153 23.847,1.792 16.000,1.792 ZM22.000,18.000 C21.171,18.000 20.500,17.328 20.500,16.500 C20.500,15.671 21.171,15.000 22.000,15.000 C22.828,15.000 23.500,15.671 23.500,16.500 C23.500,17.328 22.828,18.000 22.000,18.000 ZM16.000,18.000 C15.171,18.000 14.500,17.328 14.500,16.500 C14.500,15.671 15.171,15.000 16.000,15.000 C16.828,15.000 17.500,15.671 17.500,16.500 C17.500,17.328 16.828,18.000 16.000,18.000 ZM10.000,18.000 C9.172,18.000 8.500,17.328 8.500,16.500 C8.500,15.671 9.172,15.000 10.000,15.000 C10.828,15.000 11.500,15.671 11.500,16.500 C11.500,17.328 10.828,18.000 10.000,18.000 Z"></path>
@@ -295,22 +295,22 @@ function Header({ onNavChange, currentPage }) {
                 </div>
               </li>
               <li className="menu-item menu-item-diensten">
-                <a href="/diensten/" title="">
+                <a href="#/diensten/" title="">
                   ONZE DIENSTEN
                 </a>
               </li>
               <li className="menu-item menu-item-nieuws-media">
-                <a href="/nieuws-media/" title="">
+                <a href="#/nieuws-media/" title="">
                   NIEUWS &amp; MEDIA
                 </a>
               </li>
               {/* <li className="menu-item menu-item-vacatures">
-                <a href="/vacatures/" title="" className="jobs">
+                <a href="#/vacatures/" title="" className="jobs">
                   VACATURES
                 </a>
               </li> */}
               <li className="menu-item menu-item-contact">
-                <a href="/contact/" title="" onClick={(e) => handleNavigation('contact', e)}>
+                <a href="#/contact/" title="" onClick={(e) => handleNavigation('contact', e)}>
                   CONTACT
                 </a>
               </li>
