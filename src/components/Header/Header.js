@@ -109,7 +109,7 @@ function Header({ onNavChange, currentPage }) {
           <a href="/" className="header-logo" onClick={(e) => handleNavigation('home', e)}>
             <div className="header-branding">
             <img 
-              src="/images/LogoBoomgaard.png" 
+              src={process.env.PUBLIC_URL + "/images/LogoBoomgaard.png"} 
               alt="Auto Boomgaard Logo" 
               className="company-logo" 
             />
